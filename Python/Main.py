@@ -1,15 +1,15 @@
 from PySide6 import QtWidgets as qtw
 from PySide6 import QtCore
-from PySide2 import QtWidgets as qtw
 import sys
-from PySide2.QtCore import Qt, Slot, QAbstractTableModel
-from PySide2 import QtGui as qtg
+from PySide6.QtCore import Qt, Slot, QAbstractTableModel
+from PySide6 import QtGui as qtg
 import time
 from Client import Client
 from Stock import Stock
 from Cart import Cart
 from DaySell import DaySell
 #Ui of Stock
+
 
 class SetUpUI(qtw.QMainWindow) :
     
@@ -176,7 +176,7 @@ class ConnexionWidget(qtw.QDialog):
         identifiant_list = {}
         identifiant_list["lilian"] = "lilian"
         if self.id.text() in identifiant_list and identifiant_list[self.id.text()] == self.mdp.text():
-            form.connected = True
+            self.connected = True
             self.close()
             
         else:
@@ -339,7 +339,6 @@ class OutputVente(qtw.QGroupBox):
         self.mylayout.insertWidget(0,self.output,0)
         self.setLayout(self.mylayout)
 
-
 # 
 
 class MainWinMar(qtw.QMainWindow):
@@ -347,7 +346,7 @@ class MainWinMar(qtw.QMainWindow):
     def __init__(self):
         super(MainWinMar, self).__init__()
         # Création des widgets
-        self.connected = False
+        self.connected = True
 
         # Création de la fenêtre et de son pourtour
         self.mainMenu = self.menuBar()
@@ -360,13 +359,13 @@ class MainWinMar(qtw.QMainWindow):
 
         # Création des sous-menus pour les stocks
         stock_action = [None for i in range(4)]
-        stock_action[0] = qtw.QAction("Rajouter un produit", self)
+        stock_action[0] = qtg.QAction("Rajouter un produit", self)
         stock_action[0].triggered.connect(self.addProduct)
-        stock_action[1] = qtw.QAction("Supprimer un produit", self)
+        stock_action[1] = qtg.QAction("Supprimer un produit", self)
         stock_action[1].triggered.connect(self.delProduct)
-        stock_action[2] = qtw.QAction("Réapprovisionner", self)
+        stock_action[2] = qtg.QAction("Réapprovisionner", self)
         stock_action[2].triggered.connect(self.updateStock)
-        stock_action[3] = qtw.QAction("Modifier un produit", self)
+        stock_action[3] = qtg.QAction("Modifier un produit", self)
         stock_action[3].triggered.connect(self.modifyProduct)
 
         for i in range(len(stock_action)):
@@ -375,26 +374,26 @@ class MainWinMar(qtw.QMainWindow):
         # Création des sous-menus pour les clients
 
         client_action = [None, None]
-        client_action[0] = qtw.QAction("Nouveau Client", self)
+        client_action[0] = qtg.QAction("Nouveau Client", self)
         client_action[0].triggered.connect(self.addClient)
         client_action[0].setShortcut("Ctrl+O")
-        client_action[1] = qtw.QAction("Supprimer Client", self)
+        client_action[1] = qtg.QAction("Supprimer Client", self)
         client_action[1].triggered.connect(self.delClient)
 
         for i in client_action:
             self.menu[1].addAction(i)
 
-        connexion_action = qtw.QAction("Connexion base de données", self)
+        connexion_action = qtg.QAction("Connexion base de données", self)
         connexion_action.triggered.connect(self.connexion)
 
         self.menu[2].addAction(connexion_action)
 
         vente_action = [None,None,None]
-        vente_action[0] = qtw.QAction("Accéder à un jour", self)
+        vente_action[0] = qtg.QAction("Accéder à un jour", self)
         vente_action[0].triggered.connect(self.accessPreviousDay)
-        vente_action[1] = qtw.QAction("Vente jour actuel", self)
+        vente_action[1] = qtg.QAction("Vente jour actuel", self)
         vente_action[1].triggered.connect(self.createNewDay)
-        vente_action[2] = qtw.QAction("Extraire au format csv", self)
+        vente_action[2] = qtg.QAction("Extraire au format csv", self)
         vente_action[2].triggered.connect(self.extracttocsv)
 
         for act in vente_action:

@@ -16,14 +16,14 @@ class SetUpUI(qtw.QMainWindow) :
         self.tabWidget = qtw.QTabWidget()
         self.stockTab = StockUI.MainWinMar(self)
         self.clientTab = qtw.QMainWindow()
-        self.venteTab = qtw.QWidget()
+        self.venteTab = VenteUI.MainWinMar(self)
         
         self.tabWidget.addTab(self.stockTab, "Stock")
         self.tabWidget.addTab(self.venteTab, "Vente")
         self.tabWidget.addTab(self.clientTab, "Client")
     
         self.setWindowTitle(u"BDD Vrac")
-        self.resize(500, 550)
+        self.resize(1000, 800)
         self.setCentralWidget(self.tabWidget)
 
     def setUpConnexion(self):
@@ -63,7 +63,6 @@ class ConnexionWidget(qtw.QDialog):
 if __name__ ==  '__main__' :
     import sys
     app = qtw.QApplication(sys.argv)
-
     main = SetUpUI()
     main.show()
     sys.exit(app.exec_())

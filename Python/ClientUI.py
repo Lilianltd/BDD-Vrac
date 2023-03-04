@@ -9,7 +9,6 @@ from DaySell import DaySell
 
 
 class MainWinWidget(qtw.QWidget):
-    """Widget central: C'est lui qui s'occupe de l'affichage des dossiers/fichiers"""
     def __init__(self, parent):
         super(MainWinWidget, self).__init__()
         self.parent = parent
@@ -18,7 +17,6 @@ class MainWinWidget(qtw.QWidget):
         self.output = OutputStock()
         layoutO.addWidget(self.output)
         layout.addLayout(layoutO)
-
         self.setLayout(layout)
 
 class OutputStock(qtw.QGroupBox):

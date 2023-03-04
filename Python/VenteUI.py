@@ -49,7 +49,7 @@ class NewClient(qtw.QWidget):
         self.lineEdit.setCompleter(completer)
 
         self.labelPrice = qtw.QLabel()
-        self.labelPrice.setText(Cart.totalPriceCart(self.cart))
+        self.labelPrice.setText("Total : " + str(Cart.totalPriceCart(self.cart)) + " €")
 
         self.comboBoxPayWay = qtw.QComboBox()
         self.comboBoxPayWay.addItems({"Lydia","Espece"})
@@ -81,13 +81,11 @@ class NewClient(qtw.QWidget):
         if isfloat(self.quantity.text()) and float(self.quantity.text()) >= 0:
             if Stock.isProductAvailable(self.productSelect.currentText(),float(self.quantity.text())):
                 Cart.addProduct(self.cart, self.productSelect.currentText(), float(self.quantity.text()))
-                self.labelPrice.setText(Cart.totalPriceCart(self.cart))
+                self.labelPrice.setText("Total : " + str(Cart.totalPriceCart(self.cart)) + " €")
                 layout_Table = self.myLayout.itemAt(0)
                 layout_Table.widget().deleteLater()
-                self.productSell = qtw.QTableView()
                 self.model = TableModel(self.cart.cart,["Produits","Quantité","Prix"])
-                self.productSell.setModel(self.model)
-                self.myLayout.insertWidget(0,self.productSell,0)
+                self.myLayout.insertWidget(0,self.model,0)
                 self.setLayout(self.myLayout)
                 self.quantity.setText("")
             else:
@@ -223,17 +221,17 @@ class ErrorMessage(qtw.QDialog):
 class TableModel(qtw.QTableWidget):
     def __init__(self, data,headerName):        # Paramétrage général        # Paramétrage général
         super(TableModel, self).__init__()
-        self.setColumnCount(len(data[0]))
-        self.setRowCount(len(data))
-        self.setHorizontalHeaderLabels(headerName)
+        if data != []:
+            self.setColumnCount(len(data[0]))
+            self.setRowCount(len(data))
+            self.setHorizontalHeaderLabels(headerName)
 
-        for k in range(len(data)):
-            for i in range(len(data[0])):
-                item = qtw.QLabel()
-                data[k][i] = str(data[k][i])
-                item.setText(data[k][i])
-                
-                self.setCellWidget(k,i,item)
+            for k in range(len(data)):
+                for i in range(len(data[0])):
+                    item = qtw.QLabel()
+                    item.setText(str(data[k][i]))
+                    
+                    self.setCellWidget(k,i,item)
         
 
 class DialogChooseSell(qtw.QDialog):

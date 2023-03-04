@@ -15,7 +15,7 @@ class SetUpUI(qtw.QMainWindow) :
 
         self.tabWidget = qtw.QTabWidget()
         self.stockTab = StockUI.MainWinMar(self)
-        self.clientTab = ClientUI.MainWinMar()
+        self.clientTab = ClientUI.MainWinMar(self)
         self.venteTab = VenteUI.MainWinMar(self)
         
         self.tabWidget.addTab(self.stockTab, "Stock")
@@ -38,11 +38,9 @@ class ConnexionWidget(qtw.QDialog):
         layout = qtw.QVBoxLayout()
         self.id = qtw.QLineEdit()
         self.id.setPlaceholderText("Identifiant")
-        self.id.setObjectName("id")
         layout.addWidget(self.id)
         self.mdp = qtw.QLineEdit(self)
         self.mdp.setEchoMode(qtw.QLineEdit.PasswordEchoOnEdit)
-        self.mdp.setObjectName("mdp")
         self.mdp.setPlaceholderText("Mot de passe")
         layout.addWidget(self.mdp)
         self.button = qtw.QPushButton("Connexion", self)
@@ -65,4 +63,4 @@ if __name__ ==  '__main__' :
     app = qtw.QApplication(sys.argv)
     main = SetUpUI()
     main.show()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())

@@ -12,11 +12,11 @@ class Cart():
 
     def totalPriceCart(self) -> str:
         if self.cart == []:
-            totalstr = "Total :"
+            total = 0
         else:
             total = 0
             for buyItem in self.cart:
                 #print(self.cart)
                 total += buyItem[2]
-            totalstr = "Total : " + str(total)
-        return totalstr
+            total = round(total*100)/100
+        return total

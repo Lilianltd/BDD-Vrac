@@ -27,8 +27,8 @@ class DaySell():
     def addCart(cart : Cart, familyName : str, name : str, payWay : str, fileName : str):
         idClient = Client.getClient(familyName,name)
         idAchat = req.get("https://lilianletard.ovh/BDD/API/Achat/achat.php?lastId=True") + 1
-        urlFacture = "https://lilianletard.ovh/BDD/API/Factures/facture.php?idAchat=" + str(idAchat) + "&idClient=" + str(idClient) + "&total=" + str(cart.totalPriceCart()[8:]) + "&payWay=" + payWay
-        
+        urlFacture = "https://lilianletard.ovh/BDD/API/Factures/facture.php?idAchat=" + str(idAchat) + "&idClient=" + str(idClient) + "&total=" + str(cart.totalPriceCart()) + "&payWay=" + payWay
+
         product = ""
         quantite = ""
         prix = ""

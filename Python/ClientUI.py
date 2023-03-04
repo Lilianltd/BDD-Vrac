@@ -1,11 +1,7 @@
 from PySide6 import QtWidgets as qtw
 from PySide6.QtCore import Qt, Slot
-from PySide6 import QtGui as qtg
-import time
 from Client import Client
-from Stock import Stock
-from Cart import Cart
-from DaySell import DaySell
+
 
 class AddClient(qtw.QDialog):
     def __init__(self, parent) -> None:

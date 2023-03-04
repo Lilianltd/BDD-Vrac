@@ -15,7 +15,7 @@ class SetUpUI(qtw.QMainWindow) :
 
         self.tabWidget = qtw.QTabWidget()
         self.stockTab = StockUI.MainWinMar(self)
-        self.clientTab = qtw.QMainWindow()
+        self.clientTab = ClientUI.MainWinMar()
         self.venteTab = VenteUI.MainWinMar(self)
         
         self.tabWidget.addTab(self.stockTab, "Stock")

@@ -105,70 +105,21 @@ class MainWinMar(qtw.QMainWindow):
 
         # Création de la fenêtre et de son pourtour
         self.mainMenu = self.menuBar()
+        self.menu = [None for i in range(0,4)]
 
-        self.menu = [None for i in range(4)]
-        self.menu[0] = self.mainMenu.addMenu("&Stock")
-        self.menu[1] = self.mainMenu.addMenu("&Client")
-        self.menu[2] = self.mainMenu.addAction("Connexion")
-        self.menu[2].triggered.connect(self.connexion)
-        self.menu[3] = self.mainMenu.addMenu("&Vente")
-
-        # Création des sous-menus pour les stocks
-        stock_action = [None for i in range(4)]
-        stock_action[0] = qtg.QAction("Rajouter un produit", self)
-        stock_action[0].triggered.connect(self.addProduct)
-        stock_action[1] = qtg.QAction("Supprimer un produit", self)
-        stock_action[1].triggered.connect(self.delProduct)
-        stock_action[2] = qtg.QAction("Réapprovisionner", self)
-        stock_action[2].triggered.connect(self.updateStock)
-        stock_action[3] = qtg.QAction("Modifier un produit", self)
-        stock_action[3].triggered.connect(self.modifyProduct)
-
-        for i in range(len(stock_action)):
-            self.menu[0].addAction(stock_action[i])
+        self.menu[0] = self.mainMenu.addAction("Ajouter un produit")
+        self.menu[0].triggered.connect(self.addProduct)
+        self.menu[1] = self.mainMenu.addAction("Supprimer un produit")
+        self.menu[1].triggered.connect(self.delProduct)
+        self.menu[2] = self.mainMenu.addAction("Modifier un produit")
+        self.menu[2].triggered.connect(self.updateStock)
+        self.menu[3] = self.mainMenu.addAction("Connexion")
+        self.menu[3].triggered.connect(self.connexion)
 
         # Création des sous-menus pour les clients
 
-        client_action = [None, None]
-        client_action[0] = qtg.QAction("Nouveau Client", self)
-        client_action[0].triggered.connect(self.addClient)
-        client_action[0].setShortcut("Ctrl+O")
-        client_action[1] = qtg.QAction("Supprimer Client", self)
-        client_action[1].triggered.connect(self.delClient)
 
-        for i in client_action:
-            self.menu[1].addAction(i)
-
-
-        vente_action = [None,None,None]
-        vente_action[0] = qtg.QAction("Accéder à un jour", self)
-        vente_action[0].triggered.connect(self.accessPreviousDay)
-        vente_action[1] = qtg.QAction("Vente jour actuel", self)
-        vente_action[1].triggered.connect(self.createNewDay)
-        vente_action[2] = qtg.QAction("Extraire au format csv", self)
-        vente_action[2].triggered.connect(self.extracttocsv)
-
-
-        for act in vente_action:
-            self.menu[3].addAction(act)
     @Slot()
-
-    def addClient(self):
-        if self.parent.connected == True:
-            wid = AddClient(self)
-            wid.exec()
-        else:
-            wid = ErrorMessage("Connectez-vous")
-            wid.exec_()
-    
-    def delClient(self):
-        if self.parent.connected == True:
-            wid = DelClient(self)
-            wid.exec()
-        else:
-            wid = ErrorMessage("Connectez-vous")
-            wid.exec_()
-
     
     def connexion(self):
         self.parent.setUpConnexion()
@@ -216,36 +167,6 @@ class MainWinMar(qtw.QMainWindow):
         else:
             wid = ErrorMessage("Connectez-vous")
             wid.exec_()
-
-    def createNewDay(self):
-        self.time = time.gmtime()
-        fileName = str(self.time.tm_year) + '-' + str(self.time.tm_mon) + '-' + str(self.time.tm_mday)
-
-        if self.parent.connected == True:
-            self.widget = MainVenteWidget(fileName)
-            self.widget.date = fileName
-            self.setCentralWidget(self.widget)
-        else:
-            wid = ErrorMessage("Connectez-vous")
-            wid.exec_()
-
-    def accessPreviousDay(self):
-        self.date = ''
-        wid = DialogChooseSell(self)
-        wid.exec_()
-        if self.parent.connected == True:
-            self.widget = MainVenteWidget(self.date)
-            self.widget.date = self.date
-            self.setCentralWidget(self.widget)
-        else:
-            wid = ErrorMessage("Connectez-vous")
-            wid.exec_()
-        
-    def extracttocsv(self):
-        self.date = ''
-        wid = DialogChooseSell(self)
-        wid.exec_()
-        DaySell.csvExtract(self.date)
 
 class ErrorMessage(qtw.QDialog):
     def __init__(self,message):

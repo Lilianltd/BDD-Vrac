@@ -21,7 +21,7 @@ class MainWinWidget(qtw.QWidget):
 
         self.setLayout(layout)
 
-class OutputStock(qtw.QGroupBox):
+class OutputStock(qtw.QWidget):
     def __init__(self):
         super(OutputStock, self).__init__()
         layout = qtw.QVBoxLayout()
@@ -51,49 +51,6 @@ class UpdateStock(qtw.QDialog):
         Stock.replenish(self.productName.currentText(),float(self.quantityAdd.text()))
         self.close()
 
-class AddClient(qtw.QDialog):
-    def __init__(self, parent) -> None:
-        super(AddClient, self).__init__()
-        self.parent = parent
-        layout = qtw.QVBoxLayout()
-        self.familyName = qtw.QLineEdit()
-        self.familyName.setPlaceholderText("Nom de famille")
-        layout.addWidget(self.familyName)
-        self.prenom = qtw.QLineEdit(self)
-        self.prenom.setPlaceholderText("Prénom")
-        layout.addWidget(self.prenom)
-        self.button = qtw.QPushButton("Ajouter", self)
-        self.button.clicked.connect(self.setAdd)
-        layout.addWidget(self.button)
-        self.setLayout(layout)
-
-    def setAdd(self):
-        Client.addClient(self.familyName.text(),self.prenom.text())
-        self.close()
-
-class DelClient(qtw.QDialog):
-    def __init__(self, parent) -> None:
-        super(DelClient, self).__init__()
-        self.parent = parent
-        layout = qtw.QVBoxLayout()
-        self.lineEdit = qtw.QLineEdit(self)
-        completer = qtw.QCompleter(Client.clientList(None), self)
-        completer.setCaseSensitivity(Qt.CaseInsensitive)
-        self.lineEdit.setCompleter(completer)
-        #lineEdit.textChanged.connect(self.test)
-        layout.addWidget(self.lineEdit)
-        self.button = qtw.QPushButton("Supprimer", self)
-        self.button.clicked.connect(self.setDel)
-        layout.addWidget(self.button)
-        self.setLayout(layout)
-
-    def setDel(self):
-        data = self.lineEdit.text().split(" ")
-        Client.delClient(data[0],data[1])
-        self.close()
-
-
-
 class AddProduct(qtw.QDialog):
     def __init__(self, parent) -> None:
         super(AddProduct, self).__init__()
@@ -121,37 +78,6 @@ class AddProduct(qtw.QDialog):
         Stock.addProduct(product)
         self.close()
         
-class ConnexionWidget(qtw.QDialog):
-    def __init__(self, parent, box=False) -> None:
-        super(ConnexionWidget, self).__init__()
-        self.parent = parent
-        self.isBox = box
-        layout = qtw.QVBoxLayout()
-        self.id = qtw.QLineEdit()
-        self.id.setPlaceholderText("Identifiant")
-        self.id.setObjectName("id")
-        layout.addWidget(self.id)
-        self.mdp = qtw.QLineEdit(self)
-        self.mdp.setEchoMode(qtw.QLineEdit.PasswordEchoOnEdit)
-        self.mdp.setObjectName("mdp")
-        self.mdp.setPlaceholderText("Mot de passe")
-        layout.addWidget(self.mdp)
-        self.button = qtw.QPushButton("Connexion", self)
-        self.button.clicked.connect(self.setConnexion)
-        layout.addWidget(self.button)
-        self.setLayout(layout)
-
-    def setConnexion(self):
-        identifiant_list = {}
-        identifiant_list["lilian"] = "lilian"
-        if self.id.text() in identifiant_list and identifiant_list[self.id.text()] == self.mdp.text():
-            self.connected = True
-            self.close()
-            
-        else:
-            self.mdp.setText("")
-            self.id.setText("")
-
 class DelProduct(qtw.QDialog):
     def __init__(self) -> None:
         super(DelProduct, self).__init__()
@@ -168,154 +94,14 @@ class DelProduct(qtw.QDialog):
     def setDel(self):
         Stock.delProduct(self.productName.currentText())
         self.close()
-
-#Ui of Vente
-
-class MainVenteWidget(qtw.QWidget):
-    def __init__(self,date):
-        super(MainVenteWidget, self).__init__()
-        layout = qtw.QVBoxLayout()
-        layoutO = qtw.QHBoxLayout()
-        self.output = OutputVente(date)
-        layoutO.addWidget(self.output)
-        layout.addLayout(layoutO)
-        self.setLayout(layout)
-
-class NewClient(qtw.QWidget):
-    def __init__(self,parent) -> None:
-        super(NewClient, self).__init__()
-        self.parent = parent
-        self.cart : Cart = Cart()
-        self.layouts = []
-        self.products = Stock.getProductList()
-        self.setMinimumSize(500,500) 
-        
-        self.myLayout = qtw.QVBoxLayout()
-        self.layouts.append(self.myLayout)
-        
-        for k in range(0,3):
-            self.layouts.append(qtw.QHBoxLayout())
-
-        self.productSell = qtw.QTableView()
-        self.model = TableModel(self.cart.cart,["Produits","Quantité","Prix"])
-        self.productSell.setModel(self.model)
-
-        self.productSelect = qtw.QComboBox(self)
-        self.productSelect.setPlaceholderText("Produits")
-        self.productSelect.addItems(self.products)
-
-        self.lineEdit = qtw.QLineEdit(self)
-        completer = qtw.QCompleter(Client.clientList(None), self)
-        completer.setCaseSensitivity(Qt.CaseInsensitive)
-        self.lineEdit.setCompleter(completer)
-
-        self.labelPrice = qtw.QLabel()
-        self.labelPrice.setText(Cart.totalPriceCart(self.cart))
-
-        self.comboBoxPayWay = qtw.QComboBox()
-        self.comboBoxPayWay.addItems({"Lydia","Espece"})
-
-        self.quantity = qtw.QLineEdit(self)
-        self.quantity.setPlaceholderText("Quantité")
-
-        self.button = qtw.QPushButton("Ajouter au panier", self)
-        self.button.clicked.connect(self.newItems)
-
-        self.buttonValidate = qtw.QPushButton("Valider le panier",self)
-        self.buttonValidate.clicked.connect(self.validateCart)
-
-        self.myLayout.addWidget(self.productSell)
-        self.layouts[1].addWidget(self.productSelect)
-        self.layouts[1].addWidget(self.quantity)
-        self.layouts[1].addWidget(self.button)
-        self.layouts[2].addWidget(self.lineEdit)
-        self.layouts[3].addWidget(self.labelPrice)
-        self.layouts[3].addWidget(self.comboBoxPayWay)
-        
-        for k in range(0,3):
-            self.myLayout.addLayout(self.layouts[3-k])
-            
-        self.myLayout.addWidget(self.buttonValidate)
-        self.setLayout(self.myLayout)
-        
-    def newItems(self):
-        if isfloat(self.quantity.text()) and float(self.quantity.text()) >= 0:
-            if Stock.isProductAvailable(self.productSelect.currentText(),float(self.quantity.text())):
-                Cart.addProduct(self.cart, self.productSelect.currentText(), float(self.quantity.text()))
-                self.labelPrice.setText(Cart.totalPriceCart(self.cart))
-                layout_Table = self.myLayout.itemAt(0)
-                layout_Table.widget().deleteLater()
-                self.productSell = qtw.QTableView()
-                self.model = TableModel(self.cart.cart,["Produits","Quantité","Prix"])
-                self.productSell.setModel(self.model)
-                self.myLayout.insertWidget(0,self.productSell,0)
-                self.setLayout(self.myLayout)
-                self.quantity.setText("")
-            else:
-                widerror = ErrorMessage("Stock insuffisant")
-                widerror.exec_()
-        else:
-            self.quantity.setText("")
-            widerror = ErrorMessage("Format invalid")
-            widerror.exec_()
-            
-    def validateCart(self):
-        self.familyName, self.name = self.lineEdit.text().split(" ") 
-        if self.name != '' and self.familyName != '':
-            DaySell.addCart(self.cart, self.familyName,self.name,self.comboBoxPayWay.currentText(),self.parent.date)
-            self.parent.tableActualisation()
-            self.close()
-        else:
-            widerror = ErrorMessage("Enter a Family name and a name")
-            widerror.exec_()
-    
-class OutputVente(qtw.QGroupBox):
-    def __init__(self, date,font=None):
-        super(OutputVente, self).__init__()
-        self.windows = []
-        self.date = date
-        if font is None: font = qtg.QFont('Times', 12)
-        self.mylayout = qtw.QVBoxLayout()
-        self.output = qtw.QTableView()
-
-    
-        self.model = TableModel(DaySell.tableExtract(self.date),["Produits","Quantité","Nombre clients"])
-        self.mylayout.addWidget(self.model)
-        self.buttonNewClient = qtw.QPushButton()
-        self.buttonNewClient.setText("Nouveau Client")
-        self.buttonNewClient.clicked.connect(self.newClient)
-        self.mylayout.addWidget(self.buttonNewClient)
-        self.setLayout(self.mylayout)
-        self.buttonCloseVrac = qtw.QPushButton()
-        self.buttonCloseVrac.setText("Quitter")
-        self.buttonCloseVrac.clicked.connect(self.closeSell)
-
-    def closeSell(self):
-        self.close()
-
-    def newClient(self):
-        self.windows.append([])
-        self.windows[-1].append([])
-        self.windows[-1].append(NewClient(self))
-        self.windows[-1][1].show()
-
-    def tableActualisation(self):
-        layout_Table = self.mylayout.itemAt(0)
-        layout_Table.widget().deleteLater()
-        self.output = qtw.QTableView()
-        self.model = TableModel(DaySell.tableExtract(self.date),["Produits","Quantité","Nombre clients"])
-        self.output.setModel(self.model)
-        self.mylayout.insertWidget(0,self.output,0)
-        self.setLayout(self.mylayout)
-
 # 
 
 class MainWinMar(qtw.QMainWindow):
 
-    def __init__(self):
+    def __init__(self, parent):
         super(MainWinMar, self).__init__()
+        self.parent = parent
         # Création des widgets
-        self.connected = True
 
         # Création de la fenêtre et de son pourtour
         self.mainMenu = self.menuBar()
@@ -323,7 +109,8 @@ class MainWinMar(qtw.QMainWindow):
         self.menu = [None for i in range(4)]
         self.menu[0] = self.mainMenu.addMenu("&Stock")
         self.menu[1] = self.mainMenu.addMenu("&Client")
-        self.menu[2] = self.mainMenu.addMenu("&Connexion")
+        self.menu[2] = self.mainMenu.addAction("Connexion")
+        self.menu[2].triggered.connect(self.connexion)
         self.menu[3] = self.mainMenu.addMenu("&Vente")
 
         # Création des sous-menus pour les stocks
@@ -352,10 +139,6 @@ class MainWinMar(qtw.QMainWindow):
         for i in client_action:
             self.menu[1].addAction(i)
 
-        connexion_action = qtg.QAction("Connexion base de données", self)
-        connexion_action.triggered.connect(self.connexion)
-
-        self.menu[2].addAction(connexion_action)
 
         vente_action = [None,None,None]
         vente_action[0] = qtg.QAction("Accéder à un jour", self)
@@ -365,12 +148,13 @@ class MainWinMar(qtw.QMainWindow):
         vente_action[2] = qtg.QAction("Extraire au format csv", self)
         vente_action[2].triggered.connect(self.extracttocsv)
 
+
         for act in vente_action:
             self.menu[3].addAction(act)
     @Slot()
 
     def addClient(self):
-        if self.connected == True:
+        if self.parent.connected == True:
             wid = AddClient(self)
             wid.exec()
         else:
@@ -378,7 +162,7 @@ class MainWinMar(qtw.QMainWindow):
             wid.exec_()
     
     def delClient(self):
-        if self.connected == True:
+        if self.parent.connected == True:
             wid = DelClient(self)
             wid.exec()
         else:
@@ -387,14 +171,14 @@ class MainWinMar(qtw.QMainWindow):
 
     
     def connexion(self):
-        wid = ConnexionWidget(self, )
-        wid.exec()
-        if self.connected == True:
+        self.parent.setUpConnexion()
+        if self.parent.connected == True:
             self.widget = MainWinWidget(self)
             self.setCentralWidget(self.widget)
 
+        
     def updateStock(self):
-        if self.connected == True:
+        if self.parent.connected == True:
             wid = UpdateStock(self)
             wid.exec()
             self.widget = MainWinWidget(self)
@@ -404,7 +188,7 @@ class MainWinMar(qtw.QMainWindow):
             wid.exec_()
 
     def addProduct(self):
-        if self.connected == True:
+        if self.parent.connected == True:
             wid = AddProduct(self)
             wid.exec()
             self.widget = MainWinWidget(self)
@@ -414,7 +198,7 @@ class MainWinMar(qtw.QMainWindow):
             wid.exec_()
 
     def delProduct(self):
-        if self.connected == True:
+        if self.parent.connected == True:
             wid = DelProduct()
             wid.exec()
             self.widget = MainWinWidget(self)
@@ -424,7 +208,7 @@ class MainWinMar(qtw.QMainWindow):
             wid.exec_()
 
     def modifyProduct(self):
-        if self.connected == True:
+        if self.parent.connected == True:
             wid = ModifyProduct()
             wid.exec_()
             self.widget = MainWinWidget(self)
@@ -437,7 +221,7 @@ class MainWinMar(qtw.QMainWindow):
         self.time = time.gmtime()
         fileName = str(self.time.tm_year) + '-' + str(self.time.tm_mon) + '-' + str(self.time.tm_mday)
 
-        if self.connected == True:
+        if self.parent.connected == True:
             self.widget = MainVenteWidget(fileName)
             self.widget.date = fileName
             self.setCentralWidget(self.widget)
@@ -449,7 +233,7 @@ class MainWinMar(qtw.QMainWindow):
         self.date = ''
         wid = DialogChooseSell(self)
         wid.exec_()
-        if self.connected == True:
+        if self.parent.connected == True:
             self.widget = MainVenteWidget(self.date)
             self.widget.date = self.date
             self.setCentralWidget(self.widget)

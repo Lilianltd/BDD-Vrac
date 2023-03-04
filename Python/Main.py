@@ -11,27 +11,55 @@ class SetUpUI(qtw.QMainWindow) :
     def __init__(self, parent=None):
         
         super(SetUpUI, self).__init__(parent)
-        
+        self.connected = False
+
         self.tabWidget = qtw.QTabWidget()
-        self.stockTab = StockUI.MainWinMar()
+        self.stockTab = StockUI.MainWinMar(self)
         self.clientTab = qtw.QMainWindow()
         self.venteTab = qtw.QWidget()
         
         self.tabWidget.addTab(self.stockTab, "Stock")
         self.tabWidget.addTab(self.venteTab, "Vente")
         self.tabWidget.addTab(self.clientTab, "Client")
-          
-          
-        # ONGLET VISUALISATION
-        # TO COMPLETE
-          
-        # MAIN LAYOUT
     
         self.setWindowTitle(u"BDD Vrac")
         self.resize(500, 550)
         self.setCentralWidget(self.tabWidget)
 
-  
+    def setUpConnexion(self):
+        wid = ConnexionWidget()
+        wid.exec()
+        
+
+class ConnexionWidget(qtw.QDialog):
+    def __init__(self, box=False) -> None:
+        super(ConnexionWidget, self).__init__()
+        self.isBox = box
+        layout = qtw.QVBoxLayout()
+        self.id = qtw.QLineEdit()
+        self.id.setPlaceholderText("Identifiant")
+        self.id.setObjectName("id")
+        layout.addWidget(self.id)
+        self.mdp = qtw.QLineEdit(self)
+        self.mdp.setEchoMode(qtw.QLineEdit.PasswordEchoOnEdit)
+        self.mdp.setObjectName("mdp")
+        self.mdp.setPlaceholderText("Mot de passe")
+        layout.addWidget(self.mdp)
+        self.button = qtw.QPushButton("Connexion", self)
+        self.button.clicked.connect(self.setConnexion)
+        layout.addWidget(self.button)
+        self.setLayout(layout)
+
+    def setConnexion(self):
+        identifiant_list = {}
+        identifiant_list["lilian"] = "lilian"
+        if self.id.text() in identifiant_list and identifiant_list[self.id.text()] == self.mdp.text():
+            main.connected = True
+            self.close()
+        else:
+            self.mdp.setText("")
+            self.id.setText("") 
+
 if __name__ ==  '__main__' :
     import sys
     app = qtw.QApplication(sys.argv)

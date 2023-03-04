@@ -118,10 +118,14 @@ class MainWinMar(qtw.QMainWindow):
     @Slot()
     
     def connexion(self):
-        self.parent.setUpConnexion()
         if self.parent.connected == True:
             self.widget = MainWinWidget(self)
             self.setCentralWidget(self.widget)
+        else:
+            self.parent.setUpConnexion()
+            if self.parent.connected == True:
+                self.widget = MainWinWidget(self)
+                self.setCentralWidget(self.widget)
 
         
     def updateStock(self):

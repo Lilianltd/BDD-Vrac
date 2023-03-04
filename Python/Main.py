@@ -5,11 +5,8 @@ import ClientUI
 import VenteUI
 #Ui of Stock
 
-
-class SetUpUI(qtw.QMainWindow) :
-    
+class SetUpUI(qtw.QMainWindow) :    
     def __init__(self, parent=None):
-        
         super(SetUpUI, self).__init__(parent)
         self.connected = False
 
@@ -29,6 +26,8 @@ class SetUpUI(qtw.QMainWindow) :
     def setUpConnexion(self):
         wid = ConnexionWidget()
         wid.exec()
+        main.stockTab.connexion()
+        main.venteTab.createNewDay()
         
 
 class ConnexionWidget(qtw.QDialog):
@@ -53,6 +52,7 @@ class ConnexionWidget(qtw.QDialog):
         identifiant_list["lilian"] = "lilian"
         if self.id.text() in identifiant_list and identifiant_list[self.id.text()] == self.mdp.text():
             main.connected = True
+
             self.close()
         else:
             self.mdp.setText("")

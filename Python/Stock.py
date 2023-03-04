@@ -1,5 +1,7 @@
 import Requête as req
 
+
+
 class Stock():
 
     def productExist(Name : str) -> list:

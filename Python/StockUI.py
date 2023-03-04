@@ -112,7 +112,6 @@ class MainWinMar(qtw.QMainWindow):
         self.menu[3] = self.mainMenu.addAction("Connexion")
         self.menu[3].triggered.connect(self.connexion)
 
-        # Création des sous-menus pour les clients
 
 
     @Slot()

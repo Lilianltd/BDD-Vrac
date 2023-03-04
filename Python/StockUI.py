@@ -1,10 +1,6 @@
 from PySide6 import QtWidgets as qtw
-from PySide6.QtCore import Qt, Slot
-from PySide6 import QtGui as qtg
-import time
-from Client import Client
+from PySide6.QtCore import Slot
 from Stock import Stock
-from Cart import Cart
 from DaySell import DaySell
 
 

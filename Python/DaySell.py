@@ -8,7 +8,7 @@ import Requête as req
 class DaySell():
     
     def tableExtract(date : str) -> list:
-        sell = list(req.get("https://lilianletard.ovh/BDD/API/Factures/facture.php?tableExtract=True&date=" + date))
+        sell = list(req.get("https://lilianletard.ovh/BDD/API/Factures/facture.php?tableExtract=product&date=" + date))
         products = []
         productName = []
         for commande in sell: # commande is like that : [["product1","product2"][q1,q2]]
@@ -23,6 +23,12 @@ class DaySell():
                     editProduct[1] += float(commande[1][k])
                     products[productName.index(productSell)] = editProduct
         return products
+    
+    def clientExtract(date : str) -> list:
+        sell = list(req.get("https://lilianletard.ovh/BDD/API/Factures/facture.php?tableExtract=client&date=" + date))
+        return sell
+
+
 
     def addCart(cart : Cart, familyName : str, name : str, payWay : str, fileName : str):
         idClient = Client.getClient(familyName,name)

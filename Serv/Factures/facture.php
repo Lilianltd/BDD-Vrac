@@ -51,7 +51,7 @@ function extractcsv($request_info)
 	return json_encode($response);
 }
 
-function tableExtract($request_info)
+function productExtract($request_info)
 {
 	global $conn;
 	$date = $request_info['date'];
@@ -71,16 +71,35 @@ function tableExtract($request_info)
 	return json_encode($response);
 }
 
+function clientExtract($request_info)
+{
+	global $conn;
+	$date = $request_info['date'];
+	$query = "SELECT Nom, Prenom,Total,Moyen FROM Factures Join `Client` On Client.Id = `Id clients` Where `date` = '".$date."'; ";
+	$response = array();
+	$result = mysqli_query($conn, $query);
+	while($row = mysqli_fetch_row($result))
+	{
+		$response[] = $row;
+	}
+	header('Content-Type: application/json');
+	return json_encode($response);
+}
+
 switch ($request_method) {
   	case 'PUT': 
     	break;
 	case 'GET':
 		if ($_GET['csv'] == True) {
 			echo extractcsv($_GET);
-		} elseif ($_GET['tableExtract'] == True) {
-			echo tableExtract($_GET);
-		}
+		} 
+		elseif ($_GET['tableExtract'] == "product") {
+			echo productExtract($_GET);
+		} 
+		elseif ($_GET['tableExtract'] == "client") {
+			echo clientExtract($_GET);}
 		else{echo getListDate();}
+		
 		break;
 	case 'POST':
 		addfacture($_GET);

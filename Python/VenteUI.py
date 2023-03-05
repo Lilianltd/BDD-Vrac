@@ -11,25 +11,44 @@ from DaySell import DaySell
 
 #Ui of Vente
 
-class MainVenteWidget(qtw.QWidget):
+class resumeProduct(qtw.QWidget):
     
-    def __init__(self):
-        super(MainVenteWidget, self).__init__()
-
-    def addTable(self,date):
-        self.date = date
+    def __init__(self,parent):
+        super(resumeProduct, self).__init__()
+        self.parent = parent
         self.mylayout = qtw.QVBoxLayout()
         self.output = qtw.QTableView()
-        self.model = TableModel(DaySell.tableExtract(self.date),["Produits","Quantité","Nombre clients"])
+        self.model = TableModel([],["Produits","Quantité","Nombre clients"])
         self.mylayout.addWidget(self.model)
         self.setLayout(self.mylayout)
 
     def tableActualisation(self):
+        self.date = self.parent.date
         layout_Table = self.mylayout.itemAt(0)
         layout_Table.widget().deleteLater()
         self.output = qtw.QTableView()
-        print(self.date)
-        self.model = TableModel(DaySell.tableExtract(self.date),["Produits","Quantité","Nombre clients"])
+        self.model = TableModel(DaySell.tableExtract(self.parent.date),["Produits","Quantité","Nombre clients"])
+        self.mylayout.insertWidget(0,self.model,0)
+        self.setLayout(self.mylayout)
+
+class resumeClient(qtw.QWidget):
+    
+    def __init__(self,parent):
+        super(resumeClient, self).__init__()
+        self.parent = parent
+        self.mylayout = qtw.QVBoxLayout()
+        self.output = qtw.QTableView()
+        self.model = TableModel([],["Produits","Quantité","Nombre clients"])
+        self.mylayout.addWidget(self.model)
+        self.setLayout(self.mylayout)
+
+    def tableActualisation(self):
+        
+        self.date = self.parent.date
+        layout_Table = self.mylayout.itemAt(0)
+        layout_Table.widget().deleteLater()
+        self.output = qtw.QTableView()
+        self.model = TableModel(DaySell.clientExtract(self.parent.date),["Nom","Prenom","Total","Moyens"])
         self.mylayout.insertWidget(0,self.model,0)
         self.setLayout(self.mylayout)
 
@@ -149,8 +168,8 @@ class MainWinMar(qtw.QMainWindow):
         
 
         self.tabWidget = qtw.QTabWidget()
-        self.resumeProductTab = MainVenteWidget()
-        self.resumeClientTab = qtw.QDialog()
+        self.resumeProductTab = resumeProduct(self)
+        self.resumeClientTab = resumeClient(self)
 
         self.setCentralWidget(self.tabWidget)
 
@@ -177,7 +196,7 @@ class MainWinMar(qtw.QMainWindow):
         fileName = str(self.time.tm_year) + '-' + str(self.time.tm_mon) + '-' + str(self.time.tm_mday)
         self.date = fileName
         if self.parent.connected == True:
-            self.resumeProductTab.addTable(fileName)
+            self.tableActualisation()
         else:
             wid = ErrorMessage("Connectez-vous")
             wid.exec_()
@@ -187,8 +206,7 @@ class MainWinMar(qtw.QMainWindow):
         wid = DialogChooseSell(self)
         wid.exec_()
         if self.parent.connected == True:
-            self.resumeProductTab.date = self.date
-            self.resumeProductTab.tableActualisation()
+            self.tableActualisation()
         else:
             wid = ErrorMessage("Connectez-vous")
             wid.exec_()
@@ -201,6 +219,9 @@ class MainWinMar(qtw.QMainWindow):
 
     def tableActualisation(self):
         self.resumeProductTab.date = self.date
+        self.resumeClientTab.date = self.date
+
+        self.resumeClientTab.tableActualisation()
         self.resumeProductTab.tableActualisation()
 
     def newClient(self):

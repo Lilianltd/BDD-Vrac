@@ -27,7 +27,7 @@ class SetUpUI(qtw.QMainWindow) :
         wid = ConnexionWidget()
         wid.exec()
         main.stockTab.connexion()
-        main.venteTab.createNewDay()
+        main.venteTab.connexion()
         
 
 class ConnexionWidget(qtw.QDialog):
@@ -52,7 +52,6 @@ class ConnexionWidget(qtw.QDialog):
         identifiant_list["lilian"] = "lilian"
         if self.id.text() in identifiant_list and identifiant_list[self.id.text()] == self.mdp.text():
             main.connected = True
-
             self.close()
         else:
             self.mdp.setText("")

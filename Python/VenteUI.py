@@ -12,14 +12,26 @@ from DaySell import DaySell
 #Ui of Vente
 
 class MainVenteWidget(qtw.QWidget):
-    def __init__(self,date):
+    
+    def __init__(self):
         super(MainVenteWidget, self).__init__()
-        layout = qtw.QVBoxLayout()
-        layoutO = qtw.QHBoxLayout()
-        self.output = OutputVente(date)
-        layoutO.addWidget(self.output)
-        layout.addLayout(layoutO)
-        self.setLayout(layout)
+
+    def addTable(self,date):
+        self.date = date
+        self.mylayout = qtw.QVBoxLayout()
+        self.output = qtw.QTableView()
+        self.model = TableModel(DaySell.tableExtract(self.date),["Produits","Quantité","Nombre clients"])
+        self.mylayout.addWidget(self.model)
+        self.setLayout(self.mylayout)
+
+    def tableActualisation(self):
+        layout_Table = self.mylayout.itemAt(0)
+        layout_Table.widget().deleteLater()
+        self.output = qtw.QTableView()
+        print(self.date)
+        self.model = TableModel(DaySell.tableExtract(self.date),["Produits","Quantité","Nombre clients"])
+        self.mylayout.insertWidget(0,self.model,0)
+        self.setLayout(self.mylayout)
 
 class NewClient(qtw.QWidget):
     def __init__(self,parent) -> None:
@@ -105,44 +117,11 @@ class NewClient(qtw.QWidget):
         else:
             widerror = ErrorMessage("Enter a Family name and a name")
             widerror.exec_()
-    
-class OutputVente(qtw.QWidget):
-    def __init__(self, date,font=None):
-        super(OutputVente, self).__init__()
-        self.windows = []
-        self.date = date
-        if font is None: font = qtg.QFont('Times', 12)
-        self.mylayout = qtw.QVBoxLayout()
-        self.output = qtw.QTableView()
-
-    
-        self.model = TableModel(DaySell.tableExtract(self.date),["Produits","Quantité","Nombre clients"])
-        self.mylayout.addWidget(self.model)
-        self.buttonNewClient = qtw.QPushButton()
-        self.buttonNewClient.setText("Nouveau Client")
-        self.buttonNewClient.clicked.connect(self.newClient)
-        self.mylayout.addWidget(self.buttonNewClient)
-        self.setLayout(self.mylayout)
-
-    def newClient(self):
-        self.windows.append([])
-        self.windows[-1].append([])
-        self.windows[-1].append(NewClient(self))
-        self.windows[-1][1].show()
-
-    def tableActualisation(self):
-        layout_Table = self.mylayout.itemAt(0)
-        layout_Table.widget().deleteLater()
-        self.output = qtw.QTableView()
-        self.model = TableModel(DaySell.tableExtract(self.date),["Produits","Quantité","Nombre clients"])
-        self.mylayout.insertWidget(0,self.model,0)
-        self.setLayout(self.mylayout)
-
-# 
 
 class MainWinMar(qtw.QMainWindow):
 
     def __init__(self, parent):
+        self.windows = []
         super(MainWinMar, self).__init__()
         self.parent = parent
         # Création des widgets
@@ -167,24 +146,38 @@ class MainWinMar(qtw.QMainWindow):
 
         for act in vente_action:
             self.menu[0].addAction(act)
-        if self.parent.connected == True:
-            self.createNewDay()
+        
+
+        self.tabWidget = qtw.QTabWidget()
+        self.resumeProductTab = MainVenteWidget()
+        self.resumeClientTab = qtw.QDialog()
+
+        self.setCentralWidget(self.tabWidget)
+
+        self.tabWidget.addTab(self.resumeProductTab, "Résumé par produit")
+        self.tabWidget.addTab(self.resumeClientTab, "Résumé par Client")
+
+        self.buttonNewClient = qtw.QPushButton()
+        self.buttonNewClient.setText("Nouveau Client")
+        self.buttonNewClient.clicked.connect(self.newClient)
+
+        statusBar = self.statusBar()
+        statusBar.addWidget(self.buttonNewClient)
+   
     @Slot()
-
-
     
     def connexion(self):
-        self.parent.setUpConnexion()
-        self.createNewDay()
+        if self.parent.connected == True:
+            self.createNewDay()
+        else:    
+            self.parent.setUpConnexion()
 
     def createNewDay(self):
         self.time = time.gmtime()
         fileName = str(self.time.tm_year) + '-' + str(self.time.tm_mon) + '-' + str(self.time.tm_mday)
-
+        self.date = fileName
         if self.parent.connected == True:
-            self.widget = MainVenteWidget(fileName)
-            self.widget.date = fileName
-            self.setCentralWidget(self.widget)
+            self.resumeProductTab.addTable(fileName)
         else:
             wid = ErrorMessage("Connectez-vous")
             wid.exec_()
@@ -194,9 +187,8 @@ class MainWinMar(qtw.QMainWindow):
         wid = DialogChooseSell(self)
         wid.exec_()
         if self.parent.connected == True:
-            self.widget = MainVenteWidget(self.date)
-            self.widget.date = self.date
-            self.setCentralWidget(self.widget)
+            self.resumeProductTab.date = self.date
+            self.resumeProductTab.tableActualisation()
         else:
             wid = ErrorMessage("Connectez-vous")
             wid.exec_()
@@ -206,6 +198,17 @@ class MainWinMar(qtw.QMainWindow):
         wid = DialogChooseSell(self)
         wid.exec_()
         DaySell.csvExtract(self.date)
+
+    def tableActualisation(self):
+        self.resumeProductTab.date = self.date
+        self.resumeProductTab.tableActualisation()
+
+    def newClient(self):
+        self.windows.append([])
+        self.windows[-1].append([])
+        self.windows[-1].append(NewClient(self))
+        self.windows[-1][1].show()
+        
 
 class ErrorMessage(qtw.QDialog):
     def __init__(self,message):

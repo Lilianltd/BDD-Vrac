@@ -18,7 +18,7 @@ class SetUpUI(qtw.QMainWindow) :
         self.tabWidget.addTab(self.stockTab, "Stock")
         self.tabWidget.addTab(self.venteTab, "Vente")
         self.tabWidget.addTab(self.clientTab, "Client")
-    
+        
         self.setWindowTitle(u"BDD Vrac")
         self.resize(1000, 800)
         self.setCentralWidget(self.tabWidget)

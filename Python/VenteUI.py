@@ -17,8 +17,9 @@ class resumeProduct(qtw.QWidget):
         super(resumeProduct, self).__init__()
         self.parent = parent
         self.mylayout = qtw.QVBoxLayout()
-        self.output = qtw.QTableView()
+
         self.model = TableModel([],["Produits","Quantité","Nombre clients"])
+        self.model.cellActivated.connect(self.test)
         self.mylayout.addWidget(self.model)
         self.setLayout(self.mylayout)
 
@@ -30,6 +31,9 @@ class resumeProduct(qtw.QWidget):
         self.model = TableModel(DaySell.tableExtract(self.parent.date),["Produits","Quantité","Nombre clients"])
         self.mylayout.insertWidget(0,self.model,0)
         self.setLayout(self.mylayout)
+
+    def test():
+        print("yes")
 
 class resumeClient(qtw.QWidget):
     
@@ -48,7 +52,10 @@ class resumeClient(qtw.QWidget):
         layout_Table = self.mylayout.itemAt(0)
         layout_Table.widget().deleteLater()
         self.output = qtw.QTableView()
-        self.model = TableModel(DaySell.clientExtract(self.parent.date),["Nom","Prenom","Total","Moyens"])
+        self.data = DaySell.clientExtract(self.parent.date)
+        self.parent.totalEspece.setText("Total espèce: " + str(self.data[1]) +" €")
+        self.parent.totalLydia.setText("Total lydia : " + str(self.data[2]) +" €")
+        self.model = TableModel(self.data[0],["Nom","Prenom","Total","Moyens"])
         self.mylayout.insertWidget(0,self.model,0)
         self.setLayout(self.mylayout)
 
@@ -137,6 +144,8 @@ class NewClient(qtw.QWidget):
             widerror = ErrorMessage("Enter a Family name and a name")
             widerror.exec_()
 
+
+
 class MainWinMar(qtw.QMainWindow):
 
     def __init__(self, parent):
@@ -180,9 +189,17 @@ class MainWinMar(qtw.QMainWindow):
         self.buttonNewClient.setText("Nouveau Client")
         self.buttonNewClient.clicked.connect(self.newClient)
 
+        self.totalEspece = qtw.QLabel()
+        self.totalLydia = qtw.QLabel()
+
+        
         statusBar = self.statusBar()
         statusBar.addWidget(self.buttonNewClient)
-   
+        statusBar.addPermanentWidget(self.totalEspece)
+        statusBar.addPermanentWidget(self.totalLydia)
+        print(self.resumeClientTab.output.focusWidget())
+
+
     @Slot()
     
     def connexion(self):
@@ -222,6 +239,7 @@ class MainWinMar(qtw.QMainWindow):
         self.resumeClientTab.date = self.date
 
         self.resumeClientTab.tableActualisation()
+        
         self.resumeProductTab.tableActualisation()
 
     def newClient(self):
@@ -245,6 +263,8 @@ class ErrorMessage(qtw.QDialog):
 class TableModel(qtw.QTableWidget):
     def __init__(self, data,headerName):        # Paramétrage général        # Paramétrage général
         super(TableModel, self).__init__()
+        self.setEditTriggers(qtw.QAbstractItemView.NoEditTriggers)
+        self.setSizeAdjustPolicy(qtw.QTableWidget.AdjustToContents)
         if data != []:
             self.setColumnCount(len(data[0]))
             self.setRowCount(len(data))
@@ -252,11 +272,16 @@ class TableModel(qtw.QTableWidget):
 
             for k in range(len(data)):
                 for i in range(len(data[0])):
-                    item = qtw.QLabel()
-                    item.setText(str(data[k][i]))
+
                     
-                    self.setCellWidget(k,i,item)
-        
+                    self.setItem(k, i, qtw.QTableWidgetItem(str(data[k][i])))
+                    self.cellClicked.connect(self.test)
+    def test(self):
+        print("tes")
+
+                        
+    
+
 
 class DialogChooseSell(qtw.QDialog):
     def __init__(self,parent) -> None:

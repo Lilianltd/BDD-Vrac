@@ -2,12 +2,11 @@ from PySide6 import QtWidgets as qtw
 from PySide6.QtCore import Qt, Slot
 from PySide6 import QtGui as qtg
 import time
+
 from Client import Client
 from Stock import Stock
 from Cart import Cart
 from DaySell import DaySell
-
-
 
 #Ui of Vente
 
@@ -75,7 +74,7 @@ class NewClient(qtw.QWidget):
             self.layouts.append(qtw.QHBoxLayout())
 
         self.productSell = qtw.QTableView()
-        self.model = TableModel(self.cart.cart,["Produits","Quantité","Prix"])
+        self.model = TableModelCart(self.cart.cart,["Produits","Quantité","Prix"])
 
         self.productSelect = qtw.QComboBox(self)
         self.productSelect.setPlaceholderText("Produits")
@@ -122,7 +121,7 @@ class NewClient(qtw.QWidget):
                 self.labelPrice.setText("Total : " + str(Cart.totalPriceCart(self.cart)) + " €")
                 layout_Table = self.myLayout.itemAt(0)
                 layout_Table.widget().deleteLater()
-                self.model = TableModel(self.cart.cart,["Produits","Quantité","Prix"])
+                self.model = TableModelCart(self.cart.cart,["Produits","Quantité","Prix"])
                 self.myLayout.insertWidget(0,self.model,0)
                 self.setLayout(self.myLayout)
                 self.quantity.setText("")
@@ -143,6 +142,20 @@ class NewClient(qtw.QWidget):
         else:
             widerror = ErrorMessage("Enter a Family name and a name")
             widerror.exec_()
+
+class TableModel(qtw.QTableWidget):
+    def __init__(self, data,headerName):        # Paramétrage général        # Paramétrage général
+        super(TableModel, self).__init__()
+        self.setEditTriggers(qtw.QAbstractItemView.NoEditTriggers)
+        self.setSizeAdjustPolicy(qtw.QTableWidget.AdjustToContents)
+        if data != []:
+            self.setColumnCount(len(data[0]))
+            self.setRowCount(len(data))
+            self.setHorizontalHeaderLabels(headerName)
+
+            for k in range(len(data)):
+                for i in range(len(data[0])):                    
+                    self.setItem(k, i, qtw.QTableWidgetItem(str(data[k][i])))
 
 
 
@@ -247,7 +260,6 @@ class MainWinMar(qtw.QMainWindow):
         self.windows[-1].append([])
         self.windows[-1].append(NewClient(self))
         self.windows[-1][1].show()
-        
 
 class ErrorMessage(qtw.QDialog):
     def __init__(self,message):
@@ -259,29 +271,32 @@ class ErrorMessage(qtw.QDialog):
         layout.addWidget(self.productName)
         self.setLayout(layout)
 
-        
-class TableModel(qtw.QTableWidget):
+class TableModelCart(qtw.QTableWidget):
     def __init__(self, data,headerName):        # Paramétrage général        # Paramétrage général
-        super(TableModel, self).__init__()
+        super(TableModelCart, self).__init__()
+        headerName.append(" ")
+        print(headerName)
         self.setEditTriggers(qtw.QAbstractItemView.NoEditTriggers)
         self.setSizeAdjustPolicy(qtw.QTableWidget.AdjustToContents)
         if data != []:
-            self.setColumnCount(len(data[0]))
+            self.setColumnCount(len(data[0])+1)
             self.setRowCount(len(data))
             self.setHorizontalHeaderLabels(headerName)
 
             for k in range(len(data)):
                 for i in range(len(data[0])):
-
-                    
                     self.setItem(k, i, qtw.QTableWidgetItem(str(data[k][i])))
-                    self.cellClicked.connect(self.test)
-    def test(self):
-        print("tes")
+                self.setItem(k, i+1, qtw.QTableWidgetItem("x"))
+                self.cellDoubleClicked.connect(self.supp)
 
-                        
-    
-
+    def supp(self):
+        row = self.currentIndex().row()
+        print("test")
+        column = self.currentIndex().column()
+        print(self.columnCount(),column)
+        if (column+1) == self.columnCount():
+            print("test2")
+            self.removeRow(row)
 
 class DialogChooseSell(qtw.QDialog):
     def __init__(self,parent) -> None:

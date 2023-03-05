@@ -1,6 +1,6 @@
 from PySide6 import QtWidgets as qtw
 import sys
-import StockUI
+import StockUI 
 import ClientUI
 import VenteUI
 #Ui of Stock
@@ -9,7 +9,6 @@ class SetUpUI(qtw.QMainWindow) :
     def __init__(self, parent=None):
         super(SetUpUI, self).__init__(parent)
         self.connected = False
-
         self.tabWidget = qtw.QTabWidget()
         self.stockTab = StockUI.MainWinMar(self)
         self.clientTab = ClientUI.MainWinMar(self)
@@ -56,6 +55,8 @@ class ConnexionWidget(qtw.QDialog):
         else:
             self.mdp.setText("")
             self.id.setText("") 
+
+
 
 if __name__ ==  '__main__' :
     import sys

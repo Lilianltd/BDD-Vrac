@@ -20,3 +20,20 @@ class Cart():
                 total += buyItem[2]
             total = round(total*100)/100
         return total
+
+    def getProductList(self) -> list:
+        productList = []
+        for product in self.cart:
+            productList.append(product[0])
+        return productList
+    
+    def productIndex(self,productName : str) -> int:
+        k = -1
+        for j, product in enumerate (self.getProductList()):
+            if product == productName:
+                return j
+        return k
+    
+    def removeProduct(self,productName):
+        k = self.productIndex(productName)
+        del self.cart[k]

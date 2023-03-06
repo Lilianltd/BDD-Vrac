@@ -1,4 +1,5 @@
 from PySide6 import QtWidgets as qtw
+from PySide6 import QtGui as qtg
 import sys
 import StockUI 
 import ClientUI
@@ -56,11 +57,11 @@ class ConnexionWidget(qtw.QDialog):
             self.mdp.setText("")
             self.id.setText("") 
 
-
-
 if __name__ ==  '__main__' :
-    import sys
+    sys.argv += ['-platform', 'Windows:darkmode=2']
     app = qtw.QApplication(sys.argv)
+    app.setStyle("Fusion")
+    app.setWindowIcon(qtg.QIcon('Icon.ico'))
     main = SetUpUI()
     main.show()
     sys.exit(app.exec())

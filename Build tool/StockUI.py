@@ -4,6 +4,7 @@ from Stock import Stock
 from DaySell import DaySell
 
 
+
 class MainWinWidget(qtw.QWidget):
     """Widget central: C'est lui qui s'occupe de l'affichage des dossiers/fichiers"""
     def __init__(self, parent):
@@ -177,22 +178,6 @@ class ErrorMessage(qtw.QDialog):
         layout.addWidget(self.productName)
         self.setLayout(layout)
 
-        
-class TableModel(qtw.QTableWidget):
-    def __init__(self, data,headerName):        # Paramétrage général        # Paramétrage général
-        super(TableModel, self).__init__()
-        self.setColumnCount(len(data[0]))
-        self.setRowCount(len(data))
-        self.setHorizontalHeaderLabels(headerName)
-
-        for k in range(len(data)):
-            for i in range(len(data[0])):
-                item = qtw.QLabel()
-                item.setText(data[k][i])
-                
-                self.setCellWidget(k,i,item)
-        
-
 class DialogChooseSell(qtw.QDialog):
     def __init__(self,parent) -> None:
         super(DialogChooseSell, self).__init__()
@@ -235,6 +220,20 @@ class ModifyProduct(qtw.QDialog):
     def setModify(self):
         Stock.modifyProduct(self.productName.currentText(),float(self.price.text()))
         self.close()
+
+class TableModel(qtw.QTableWidget):
+    def __init__(self, data,headerName):        # Paramétrage général        # Paramétrage général
+        super(TableModel, self).__init__()
+        self.setEditTriggers(qtw.QAbstractItemView.NoEditTriggers)
+        self.setSizeAdjustPolicy(qtw.QTableWidget.AdjustToContents)
+        if data != []:
+            self.setColumnCount(len(data[0]))
+            self.setRowCount(len(data))
+            self.setHorizontalHeaderLabels(headerName)
+
+            for k in range(len(data)):
+                for i in range(len(data[0])):                    
+                    self.setItem(k, i, qtw.QTableWidgetItem(str(data[k][i])))
 
 def isfloat(value) -> bool:
   try:

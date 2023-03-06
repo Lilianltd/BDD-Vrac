@@ -1,6 +1,7 @@
 from PySide6 import QtWidgets as qtw
+from PySide6 import QtGui as qtg
 import sys
-import StockUI
+import StockUI 
 import ClientUI
 import VenteUI
 #Ui of Stock
@@ -9,7 +10,6 @@ class SetUpUI(qtw.QMainWindow) :
     def __init__(self, parent=None):
         super(SetUpUI, self).__init__(parent)
         self.connected = False
-
         self.tabWidget = qtw.QTabWidget()
         self.stockTab = StockUI.MainWinMar(self)
         self.clientTab = ClientUI.MainWinMar(self)
@@ -18,7 +18,7 @@ class SetUpUI(qtw.QMainWindow) :
         self.tabWidget.addTab(self.stockTab, "Stock")
         self.tabWidget.addTab(self.venteTab, "Vente")
         self.tabWidget.addTab(self.clientTab, "Client")
-    
+        
         self.setWindowTitle(u"BDD Vrac")
         self.resize(1000, 800)
         self.setCentralWidget(self.tabWidget)
@@ -58,8 +58,10 @@ class ConnexionWidget(qtw.QDialog):
             self.id.setText("") 
 
 if __name__ ==  '__main__' :
-    import sys
+    sys.argv += ['-platform', 'Windows:darkmode=2']
     app = qtw.QApplication(sys.argv)
+    app.setStyle("Fusion")
+    app.setWindowIcon(qtg.QIcon('Icon.ico'))
     main = SetUpUI()
     main.show()
     sys.exit(app.exec())

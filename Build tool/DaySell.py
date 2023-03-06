@@ -26,7 +26,14 @@ class DaySell():
     
     def clientExtract(date : str) -> list:
         sell = list(req.get("https://lilianletard.ovh/BDD/API/Factures/facture.php?tableExtract=client&date=" + date))
-        return sell
+        lydia = 0
+        espece = 0
+        for s in sell:
+            if s[3] == "Espece":
+                espece += float(s[2])
+            else:
+                lydia += float(s[2])
+        return sell,espece,lydia
 
 
 

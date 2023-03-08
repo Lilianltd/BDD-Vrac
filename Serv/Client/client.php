@@ -5,12 +5,12 @@ $request_method = $_SERVER["REQUEST_METHOD"];
 function getLastId()
 {
 	global $conn;
-	$query = "SELECT count(*) FROM `Client`";
+	$query = "SELECT max(Id) FROM `Client`";
 	$response = array();
 	$result = mysqli_query($conn, $query);
 	while($row = mysqli_fetch_row($result))
 	{
-		$response[] = floatval($row[0]);
+		$response[] = floatval($row[0])+1;
 	}
 	return $response[0];
 }
@@ -22,6 +22,7 @@ function addClient($request_info)
 	$Prenom = $request_info['Prenom'];
 	$id = getLastId();
 	$query = "INSERT INTO `Client` VALUES (".$id.",'".$Nom."','".$Prenom."','Actif') ";
+	echo $query;
 	mysqli_query($conn,$query);
 }
 

@@ -1,4 +1,3 @@
-import json as js
 import csv
 from Client import Client
 from Stock import Stock

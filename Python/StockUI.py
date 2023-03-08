@@ -62,7 +62,7 @@ class AddProduct(qtw.QDialog):
 
         self.priceSelect = qtw.QComboBox(self)
         self.priceSelect.setPlaceholderText("Type de prix")
-        self.priceSelect.addItems({"Au kilo", "A l'unité"})
+        self.priceSelect.addItems({"Au kilo", "A l'unité", "Au litre"})
         layout.addWidget(self.priceSelect)
 
         self.button = qtw.QPushButton("Ajouter", self)

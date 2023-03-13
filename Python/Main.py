@@ -59,7 +59,7 @@ class ConnexionWidget(qtw.QDialog):
             self.id.setText("")
 
 if __name__ ==  '__main__' :
-    sys.argv += ['-platform', 'windows:darkmode=2']
+    #sys.argv += ['-platform', 'windows:darkmode=2']
     app = qtw.QApplication(sys.argv)
     app.setStyle("Fusion")
     app.setWindowIcon(qtg.QIcon('icon.png'))

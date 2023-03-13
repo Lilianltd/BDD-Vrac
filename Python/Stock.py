@@ -34,8 +34,9 @@ class Stock():
 
     def tableExtract() -> list:
         products = []
-        for productName in Stock.getProductList():
-            product = Stock.productExist(productName)
+        productRaw = req.get("https://lilianletard.ovh/BDD/API/Stock/product.php?getAll=True")
+
+        for product in productRaw:          
             products.append([product[0],str(product[1]),product[3]])
             if product[2] == '0': #product[1] is the selected price type
                 products[-1][1] += " € / kg"

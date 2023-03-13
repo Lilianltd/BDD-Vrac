@@ -369,7 +369,7 @@ class TableModelCart(qtw.QTableWidget):
         row = self.currentIndex().row()
         column = self.currentIndex().column()
         productName = self.itemAt(0,row).text()
-        if (column+1) == self.columnCount():
+        if (column+1) == self.columnCount(): #on regarde si c'est la dernière colonne
             self.removeRow(row)
             self.parent.cart.removeProduct(productName)
 

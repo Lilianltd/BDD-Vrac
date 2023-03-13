@@ -20,5 +20,3 @@ def delet(url : str) -> None:
     requests.delete(url)
 
 
-a = requests.post('https://lilianletard.ovh/BDD/API/Client/client.php?Nom=Deutsh&Prenom=Arthur')
-print(a.text)

@@ -46,7 +46,7 @@ class ConnexionWidget(qtw.QDialog):
         self.button.clicked.connect(self.setConnexion)
         layout.addWidget(self.button)
         self.setLayout(layout)
-
+        
     def setConnexion(self):
         identifiant_list = {}
         identifiant_list["lilian"] = "lilian"
@@ -55,13 +55,15 @@ class ConnexionWidget(qtw.QDialog):
             self.close()
         else:
             self.mdp.setText("")
-            self.id.setText("") 
+            self.id.setText("")
 
 if __name__ ==  '__main__' :
-    #sys.argv += ['-platform', 'Linux:darkmode=2']
+    #sys.argv += ['-platform', 'windows:darkmode=2']
     app = qtw.QApplication(sys.argv)
     app.setStyle("Fusion")
     app.setWindowIcon(qtg.QIcon('Icon.ico'))
+    print(app.windowIcon())
     main = SetUpUI()
     main.show()
+    main.setWindowIcon(qtg.QIcon('Icon.ico'))
     sys.exit(app.exec())

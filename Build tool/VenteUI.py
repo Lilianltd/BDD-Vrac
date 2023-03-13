@@ -48,8 +48,8 @@ class resumeClient(qtw.QWidget):
         layout_Table.widget().deleteLater()
         self.output = qtw.QTableView()
         self.data = DaySell.clientExtract(self.parent.date)
-        self.parent.totalEspece.setText("Total espèce: " + str(self.data[1]) +" €")
-        self.parent.totalLydia.setText("Total lydia : " + str(self.data[2]) +" €")
+        self.parent.totalEspece.setText("Total espèce: " + str(round(self.data[1]*100)/100) +" €")
+        self.parent.totalLydia.setText("Total lydia : " + str(round(self.data[2]*100)/100) +" €")
         self.model = TableModel(self.data[0],["Nom","Prenom","Total","Moyens"])
         self.mylayout.insertWidget(0,self.model,0)
         self.setLayout(self.mylayout)
@@ -119,27 +119,14 @@ class NewClient(qtw.QWidget):
 
                 if Stock.isProductAvailable(self.productSelect.currentText(),float(self.quantity.text())):
                     Cart.addProduct(self.cart, self.productSelect.currentText(), float(self.quantity.text()))
-                    self.labelPrice.setText("Total : " + str(Cart.totalPriceCart(self.cart)) + " €")
-                    layout_Table = self.myLayout.itemAt(0)
-                    layout_Table.widget().deleteLater()
-                    self.model = TableModelCart(self.cart.cart,["Produits","Quantité","Prix"],self)
-                    self.myLayout.insertWidget(0,self.model,0)
-                    self.setLayout(self.myLayout)
-                    self.quantity.setText("")
+                    self.actualise()
                 else:
                     self.check = None
                     widerror = NegativeStock(self)
                     widerror.exec_()
                     if self.check == True:
                         Cart.addProduct(self.cart, self.productSelect.currentText(), float(self.quantity.text()))
-                        self.labelPrice.setText("Total : " + str(Cart.totalPriceCart(self.cart)) + " €")
-                        layout_Table = self.myLayout.itemAt(0)
-                        layout_Table.widget().deleteLater()
-                        self.model = TableModelCart(self.cart.cart,["Produits","Quantité","Prix"],self)
-                        self.myLayout.insertWidget(0,self.model,0)
-                        self.setLayout(self.myLayout)
-                        self.quantity.setText("")
-
+                        self.actualise()
             
             
             else:
@@ -147,13 +134,7 @@ class NewClient(qtw.QWidget):
                 if Stock.isProductAvailable(self.productSelect.currentText(),float(self.quantity.text())+oldQuantity):
                     self.cart.removeProduct(self.productSelect.currentText())
                     Cart.addProduct(self.cart, self.productSelect.currentText(), float(self.quantity.text())+oldQuantity) 
-                    self.labelPrice.setText("Total : " + str(Cart.totalPriceCart(self.cart)) + " €")
-                    layout_Table = self.myLayout.itemAt(0)
-                    layout_Table.widget().deleteLater()
-                    self.model = TableModelCart(self.cart.cart,["Produits","Quantité","Prix"],self)
-                    self.myLayout.insertWidget(0,self.model,0)
-                    self.setLayout(self.myLayout)
-                    self.quantity.setText("")
+                    self.actualise()
                 else:
                     self.check = None
                     widerror = NegativeStock(self)
@@ -161,18 +142,21 @@ class NewClient(qtw.QWidget):
                     if self.check == True:
                         self.cart.removeProduct(self.productSelect.currentText())
                         Cart.addProduct(self.cart, self.productSelect.currentText(), float(self.quantity.text())+oldQuantity) 
-                        self.labelPrice.setText("Total : " + str(Cart.totalPriceCart(self.cart)) + " €")
-                        layout_Table = self.myLayout.itemAt(0)
-                        layout_Table.widget().deleteLater()
-                        self.model = TableModelCart(self.cart.cart,["Produits","Quantité","Prix"],self)
-                        self.myLayout.insertWidget(0,self.model,0)
-                        self.setLayout(self.myLayout)
-                        self.quantity.setText("")
+                        self.actualise()
         else:
             self.quantity.setText("")
             widerror = ErrorMessage("Format invalid")
             widerror.exec_()
             
+    def actualise(self):
+        self.labelPrice.setText("Total : " + str(Cart.totalPriceCart(self.cart)) + " €")
+        layout_Table = self.myLayout.itemAt(0)
+        layout_Table.widget().deleteLater()
+        self.model = TableModelCart(self.cart.cart,["Produits","Quantité","Prix"],self)
+        self.myLayout.insertWidget(0,self.model,0)
+        self.setLayout(self.myLayout)
+        self.quantity.setText("")
+
     def validateCart(self):
         if self.lineEdit.text() == "":
             widerror = ErrorMessage("Enter a Family name and a name")
@@ -191,7 +175,6 @@ class TableModel(qtw.QTableWidget):
     def __init__(self, data,headerName):        # Paramétrage général        # Paramétrage général
         super(TableModel, self).__init__()
         self.setEditTriggers(qtw.QAbstractItemView.NoEditTriggers)
-        self.setSizeAdjustPolicy(qtw.QTableWidget.AdjustToContents)
         if data != []:
             self.setColumnCount(len(data[0]))
             self.setRowCount(len(data))
@@ -200,7 +183,7 @@ class TableModel(qtw.QTableWidget):
             for k in range(len(data)):
                 for i in range(len(data[0])):                    
                     self.setItem(k, i, qtw.QTableWidgetItem(str(data[k][i])))
-
+        self.setSizeAdjustPolicy(qtw.QTableWidget.AdjustToContents)
 class NegativeStock(qtw.QDialog):
     def __init__(self,parent):
         self.parent = parent
@@ -358,20 +341,28 @@ class TableModelCart(qtw.QTableWidget):
             self.setColumnCount(len(data[0])+1)
             self.setRowCount(len(data))
             self.setHorizontalHeaderLabels(headerName)
-
+            self.myitem = []
             for k in range(len(data)):
+                self.myitem.append([])
                 for i in range(len(data[0])):
-                    self.setItem(k, i, qtw.QTableWidgetItem(str(data[k][i])))
+                    self.myitem[k].append(qtw.QTableWidgetItem(str(data[k][i])))
+                    self.setItem(k, i, self.myitem[k][i])
                 self.setItem(k, i+1, qtw.QTableWidgetItem("x"))
                 self.cellDoubleClicked.connect(self.supp)
 
     def supp(self):
         row = self.currentIndex().row()
         column = self.currentIndex().column()
-        productName = self.itemAt(0,row).text()
-        if (column+1) == self.columnCount(): #on regarde si c'est la dernière colonne
-            self.removeRow(row)
+
+        print(row,column)
+        
+        productName = self.myitem[row][0].text()
+        print(productName)
+
+        if (column+1) == self.columnCount():
             self.parent.cart.removeProduct(productName)
+            print(self.parent.cart.cart)
+            self.parent.actualise()
 
 class DialogChooseSell(qtw.QDialog):
     def __init__(self,parent) -> None:

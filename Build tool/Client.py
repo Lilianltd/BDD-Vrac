@@ -3,7 +3,9 @@ import Requête as req
 class Client():
     def addClient(familyName : str, name:str) -> None:
         url = "https://lilianletard.ovh/BDD/API/Client/client.php?Nom=" + familyName +"&Prenom=" + name
+        print(url)
         req.post(url)
+
     def delClient(familyName : str, name:str) -> None:
         url = "https://lilianletard.ovh/BDD/API/Client/client.php?Nom=" + familyName +"&Prenom=" + name
         req.delet(url)

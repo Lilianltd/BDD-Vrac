@@ -36,4 +36,5 @@ class Cart():
     
     def removeProduct(self,productName):
         k = self.productIndex(productName)
-        del self.cart[k]
+        if k != -1:
+            del self.cart[k]

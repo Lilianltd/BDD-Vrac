@@ -18,3 +18,5 @@ def put(url : str):
 
 def delet(url : str) -> None:
     requests.delete(url)
+
+

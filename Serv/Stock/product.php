@@ -55,6 +55,19 @@ function addProduct($request_info)
 	mysqli_query($conn,$query);
 }
 
+function getStock(){
+	global $conn;
+    $query = "SELECT * FROM `Stock`";
+    $response = array();
+    $result = mysqli_query($conn, $query);
+    while($row = mysqli_fetch_row($result))
+    {
+        $response[] = $row;
+    }
+    header('Content-Type: application/json');
+    return json_encode($response);
+}
+
 function delProduct($request_info)
 {
 	global $conn;
@@ -74,7 +87,10 @@ switch ($request_method) {
             if ($_GET['getName'] == True) 
             {
                 echo getProductsName();
-            } 
+            }
+			elseif($_GET['getAll'] == True){
+				echo getStock();
+			} 
             else 
             {
                 echo getProduct($_GET);

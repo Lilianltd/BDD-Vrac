@@ -19,8 +19,10 @@ class Stock():
             url = "https://lilianletard.ovh/BDD/API/Stock/product.php?Nom=" + product[0] + "&Prix=" + product[2] + "&Type="
             if product[1] == "Au kilo": #product[1] is the selected price type
                 url += "0"
-            else:
+            elif product[1] == "A l'unité":
                 url += "1"
+            else:
+                url += "2"
             req.post(url)
 
 
@@ -36,9 +38,11 @@ class Stock():
             product = Stock.productExist(productName)
             products.append([product[0],str(product[1]),product[3]])
             if product[2] == '0': #product[1] is the selected price type
-                products[-1][1] += " / kg"
+                products[-1][1] += " € / kg"
+            elif product[2] == '1':
+                products[-1][1] += " € / unité"
             else:
-                products[-1][1] += " / unité"
+                products[-1][1] += " € / l"
         return products
     
     def getProductQuantity(productName : str) -> float:

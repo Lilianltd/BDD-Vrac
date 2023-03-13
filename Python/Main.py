@@ -10,6 +10,7 @@ class SetUpUI(qtw.QMainWindow) :
     def __init__(self, parent=None):
         super(SetUpUI, self).__init__(parent)
         self.connected = False
+        self.setWindowIcon(qtg.QIcon(qtg.QIcon(qtg.QPixmap("icon.png"))))
         self.tabWidget = qtw.QTabWidget()
         self.stockTab = StockUI.MainWinMar(self)
         self.clientTab = ClientUI.MainWinMar(self)
@@ -58,12 +59,11 @@ class ConnexionWidget(qtw.QDialog):
             self.id.setText("")
 
 if __name__ ==  '__main__' :
-    #sys.argv += ['-platform', 'windows:darkmode=2']
+    sys.argv += ['-platform', 'windows:darkmode=2']
     app = qtw.QApplication(sys.argv)
     app.setStyle("Fusion")
-    app.setWindowIcon(qtg.QIcon('Icon.ico'))
+    app.setWindowIcon(qtg.QIcon('icon.png'))
     print(app.windowIcon())
     main = SetUpUI()
     main.show()
-    main.setWindowIcon(qtg.QIcon('Icon.ico'))
     sys.exit(app.exec())

@@ -1,17 +1,12 @@
 import requests
 
 def get(url : str) -> str:
-    try :
-        request = requests.get(url)
-        return request.json()
-    except requests.exceptions as err:
-        print(err)
+    request = requests.get(url)
+    return request.json()
 
 def post(url : str):
-    try :
-        request = requests.post(url)
-    except requests.exceptions as err:
-        print(err)
+    request = requests.post(url)
+
 
 def put(url : str):
     requests.put(url)

@@ -24,13 +24,13 @@
  {},
  '3.10.10 (tags/v3.10.10:aad5f6a, Feb  7 2023, 17:20:36) [MSC v.1929 64 bit '
  '(AMD64)]',
- [('pyi_rth_subprocess',
-   'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_subprocess.py',
-   'PYSOURCE'),
-  ('pyi_rth_inspect',
+ [('pyi_rth_inspect',
    'C:\\Users\\LETARD '
    'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_inspect.py',
+   'PYSOURCE'),
+  ('pyi_rth_subprocess',
+   'C:\\Users\\LETARD '
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_subprocess.py',
    'PYSOURCE'),
   ('pyi_rth_pyside6',
    'C:\\Users\\LETARD '
@@ -39,9 +39,65 @@
   ('Main',
    'D:\\Documents\\Drive\\IMT\\Asso\\BDD Vrac\\BDD v2\\Build tool\\Main.py',
    'PYSOURCE')],
- [('inspect',
+ [('subprocess',
    'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\inspect.py',
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\subprocess.py',
+   'PYMODULE'),
+  ('selectors',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\selectors.py',
+   'PYMODULE'),
+  ('contextlib',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\contextlib.py',
+   'PYMODULE'),
+  ('threading',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\threading.py',
+   'PYMODULE'),
+  ('_threading_local',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\_threading_local.py',
+   'PYMODULE'),
+  ('signal',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\signal.py',
+   'PYMODULE'),
+  ('_strptime',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\_strptime.py',
+   'PYMODULE'),
+  ('datetime',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\datetime.py',
+   'PYMODULE'),
+  ('calendar',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\calendar.py',
+   'PYMODULE'),
+  ('argparse',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\argparse.py',
+   'PYMODULE'),
+  ('textwrap',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\textwrap.py',
+   'PYMODULE'),
+  ('shutil',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\shutil.py',
+   'PYMODULE'),
+  ('zipfile',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\zipfile.py',
+   'PYMODULE'),
+  ('py_compile',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\py_compile.py',
+   'PYMODULE'),
+  ('importlib.machinery',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\importlib\\machinery.py',
    'PYMODULE'),
   ('importlib',
    'C:\\Program '
@@ -59,10 +115,6 @@
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\typing.py',
    'PYMODULE'),
-  ('contextlib',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\contextlib.py',
-   'PYMODULE'),
   ('tempfile',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\tempfile.py',
@@ -70,18 +122,6 @@
   ('random',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\random.py',
-   'PYMODULE'),
-  ('_strptime',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\_strptime.py',
-   'PYMODULE'),
-  ('datetime',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\datetime.py',
-   'PYMODULE'),
-  ('calendar',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\calendar.py',
    'PYMODULE'),
   ('statistics',
    'C:\\Program '
@@ -127,25 +167,25 @@
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\dataclasses.py',
    'PYMODULE'),
-  ('copy',
+  ('inspect',
    'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\copy.py',
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\inspect.py',
+   'PYMODULE'),
+  ('dis',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\dis.py',
+   'PYMODULE'),
+  ('opcode',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\opcode.py',
+   'PYMODULE'),
+  ('ast',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\ast.py',
    'PYMODULE'),
   ('_compat_pickle',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\_compat_pickle.py',
-   'PYMODULE'),
-  ('struct',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\struct.py',
-   'PYMODULE'),
-  ('threading',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\threading.py',
-   'PYMODULE'),
-  ('_threading_local',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\_threading_local.py',
    'PYMODULE'),
   ('string',
    'C:\\Program '
@@ -155,49 +195,17 @@
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\bisect.py',
    'PYMODULE'),
-  ('shutil',
+  ('importlib.abc',
    'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\shutil.py',
-   'PYMODULE'),
-  ('zipfile',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\zipfile.py',
-   'PYMODULE'),
-  ('py_compile',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\py_compile.py',
-   'PYMODULE'),
-  ('importlib.util',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\importlib\\util.py',
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\importlib\\abc.py',
    'PYMODULE'),
   ('importlib._abc',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\importlib\\_abc.py',
    'PYMODULE'),
-  ('tarfile',
+  ('importlib._bootstrap',
    'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\tarfile.py',
-   'PYMODULE'),
-  ('gzip',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\gzip.py',
-   'PYMODULE'),
-  ('_compression',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\_compression.py',
-   'PYMODULE'),
-  ('lzma',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\lzma.py',
-   'PYMODULE'),
-  ('bz2',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\bz2.py',
-   'PYMODULE'),
-  ('importlib.abc',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\importlib\\abc.py',
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\importlib\\_bootstrap.py',
    'PYMODULE'),
   ('importlib._bootstrap_external',
    'C:\\Program '
@@ -275,10 +283,6 @@
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\getopt.py',
    'PYMODULE'),
-  ('gettext',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\gettext.py',
-   'PYMODULE'),
   ('email.charset',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\email\\charset.py',
@@ -315,10 +319,6 @@
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\socket.py',
    'PYMODULE'),
-  ('selectors',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\selectors.py',
-   'PYMODULE'),
   ('quopri',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\quopri.py',
@@ -330,10 +330,6 @@
   ('optparse',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\optparse.py',
-   'PYMODULE'),
-  ('textwrap',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\textwrap.py',
    'PYMODULE'),
   ('email',
    'C:\\Program '
@@ -355,45 +351,41 @@
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\importlib\\readers.py',
    'PYMODULE'),
-  ('importlib._bootstrap',
+  ('struct',
    'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\importlib\\_bootstrap.py',
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\struct.py',
    'PYMODULE'),
-  ('argparse',
+  ('importlib.util',
    'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\argparse.py',
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\importlib\\util.py',
    'PYMODULE'),
-  ('importlib.machinery',
+  ('tarfile',
    'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\importlib\\machinery.py',
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\tarfile.py',
    'PYMODULE'),
-  ('dis',
+  ('gzip',
    'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\dis.py',
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\gzip.py',
    'PYMODULE'),
-  ('opcode',
+  ('_compression',
    'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\opcode.py',
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\_compression.py',
    'PYMODULE'),
-  ('ast',
+  ('lzma',
    'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\ast.py',
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\lzma.py',
    'PYMODULE'),
-  ('subprocess',
+  ('bz2',
    'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\subprocess.py',
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\bz2.py',
    'PYMODULE'),
-  ('signal',
+  ('copy',
    'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\signal.py',
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\copy.py',
    'PYMODULE'),
-  ('_py_abc',
+  ('gettext',
    'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\_py_abc.py',
-   'PYMODULE'),
-  ('tracemalloc',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\tracemalloc.py',
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\gettext.py',
    'PYMODULE'),
   ('getpass',
    'C:\\Program '
@@ -435,9 +427,17 @@
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\http\\client.py',
    'PYMODULE'),
+  ('tracemalloc',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\tracemalloc.py',
+   'PYMODULE'),
   ('stringprep',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\stringprep.py',
+   'PYMODULE'),
+  ('_py_abc',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\_py_abc.py',
    'PYMODULE'),
   ('VenteUI',
    'D:\\Documents\\Drive\\IMT\\Asso\\BDD Vrac\\BDD v2\\Build tool\\VenteUI.py',
@@ -467,6 +467,22 @@
   ('http.cookies',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\http\\cookies.py',
+   'PYMODULE'),
+  ('json',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\json\\__init__.py',
+   'PYMODULE'),
+  ('json.encoder',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\json\\encoder.py',
+   'PYMODULE'),
+  ('json.decoder',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\json\\decoder.py',
+   'PYMODULE'),
+  ('json.scanner',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\json\\scanner.py',
    'PYMODULE'),
   ('requests.models',
    'C:\\Users\\LETARD '
@@ -744,22 +760,6 @@
    'C:\\Users\\LETARD '
    'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\urllib3\\__init__.py',
    'PYMODULE'),
-  ('json',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\json\\__init__.py',
-   'PYMODULE'),
-  ('json.encoder',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\json\\encoder.py',
-   'PYMODULE'),
-  ('json.decoder',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\json\\decoder.py',
-   'PYMODULE'),
-  ('json.scanner',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\lib\\json\\scanner.py',
-   'PYMODULE'),
   ('Cart',
    'D:\\Documents\\Drive\\IMT\\Asso\\BDD Vrac\\BDD v2\\Build tool\\Cart.py',
    'PYMODULE'),
@@ -791,57 +791,49 @@
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\VCRUNTIME140.dll',
    'BINARY'),
-  ('PySide6\\plugins\\tls\\qopensslbackend.dll',
+  ('PySide6\\plugins\\platforms\\qoffscreen.dll',
    'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\plugins\\tls\\qopensslbackend.dll',
-   'BINARY'),
-  ('PySide6\\plugins\\imageformats\\qpdf.dll',
-   'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\plugins\\imageformats\\qpdf.dll',
-   'BINARY'),
-  ('PySide6\\plugins\\platforms\\qminimal.dll',
-   'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\plugins\\platforms\\qminimal.dll',
-   'BINARY'),
-  ('PySide6\\plugins\\networkinformation\\qnetworklistmanager.dll',
-   'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\plugins\\networkinformation\\qnetworklistmanager.dll',
-   'BINARY'),
-  ('PySide6\\plugins\\iconengines\\qsvgicon.dll',
-   'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\plugins\\iconengines\\qsvgicon.dll',
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\plugins\\platforms\\qoffscreen.dll',
    'BINARY'),
   ('PySide6\\opengl32sw.dll',
    'C:\\Users\\LETARD '
    'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\opengl32sw.dll',
    'BINARY'),
-  ('PySide6\\plugins\\tls\\qcertonlybackend.dll',
+  ('PySide6\\plugins\\tls\\qopensslbackend.dll',
    'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\plugins\\tls\\qcertonlybackend.dll',
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\plugins\\tls\\qopensslbackend.dll',
    'BINARY'),
-  ('PySide6\\plugins\\imageformats\\qtiff.dll',
+  ('PySide6\\plugins\\styles\\qwindowsvistastyle.dll',
    'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\plugins\\imageformats\\qtiff.dll',
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\plugins\\styles\\qwindowsvistastyle.dll',
    'BINARY'),
   ('PySide6\\plugins\\imageformats\\qwebp.dll',
    'C:\\Users\\LETARD '
    'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\plugins\\imageformats\\qwebp.dll',
    'BINARY'),
-  ('PySide6\\plugins\\platforms\\qoffscreen.dll',
+  ('PySide6\\plugins\\tls\\qcertonlybackend.dll',
    'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\plugins\\platforms\\qoffscreen.dll',
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\plugins\\tls\\qcertonlybackend.dll',
+   'BINARY'),
+  ('PySide6\\plugins\\iconengines\\qsvgicon.dll',
+   'C:\\Users\\LETARD '
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\plugins\\iconengines\\qsvgicon.dll',
+   'BINARY'),
+  ('PySide6\\plugins\\imageformats\\qicns.dll',
+   'C:\\Users\\LETARD '
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\plugins\\imageformats\\qicns.dll',
    'BINARY'),
   ('PySide6\\plugins\\imageformats\\qico.dll',
    'C:\\Users\\LETARD '
    'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\plugins\\imageformats\\qico.dll',
    'BINARY'),
+  ('PySide6\\plugins\\networkinformation\\qnetworklistmanager.dll',
+   'C:\\Users\\LETARD '
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\plugins\\networkinformation\\qnetworklistmanager.dll',
+   'BINARY'),
   ('PySide6\\plugins\\imageformats\\qsvg.dll',
    'C:\\Users\\LETARD '
    'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\plugins\\imageformats\\qsvg.dll',
-   'BINARY'),
-  ('PySide6\\plugins\\imageformats\\qicns.dll',
-   'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\plugins\\imageformats\\qicns.dll',
    'BINARY'),
   ('PySide6\\plugins\\imageformats\\qtga.dll',
    'C:\\Users\\LETARD '
@@ -851,34 +843,46 @@
    'C:\\Users\\LETARD '
    'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\plugins\\platforminputcontexts\\qtvirtualkeyboardplugin.dll',
    'BINARY'),
-  ('PySide6\\plugins\\imageformats\\qwbmp.dll',
+  ('PySide6\\plugins\\imageformats\\qtiff.dll',
    'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\plugins\\imageformats\\qwbmp.dll',
-   'BINARY'),
-  ('PySide6\\plugins\\styles\\qwindowsvistastyle.dll',
-   'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\plugins\\styles\\qwindowsvistastyle.dll',
-   'BINARY'),
-  ('PySide6\\plugins\\imageformats\\qgif.dll',
-   'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\plugins\\imageformats\\qgif.dll',
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\plugins\\imageformats\\qtiff.dll',
    'BINARY'),
   ('PySide6\\plugins\\platforms\\qwindows.dll',
    'C:\\Users\\LETARD '
    'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\plugins\\platforms\\qwindows.dll',
    'BINARY'),
+  ('PySide6\\plugins\\tls\\qschannelbackend.dll',
+   'C:\\Users\\LETARD '
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\plugins\\tls\\qschannelbackend.dll',
+   'BINARY'),
+  ('PySide6\\plugins\\imageformats\\qgif.dll',
+   'C:\\Users\\LETARD '
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\plugins\\imageformats\\qgif.dll',
+   'BINARY'),
   ('PySide6\\plugins\\imageformats\\qjpeg.dll',
    'C:\\Users\\LETARD '
    'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\plugins\\imageformats\\qjpeg.dll',
+   'BINARY'),
+  ('PySide6\\plugins\\imageformats\\qpdf.dll',
+   'C:\\Users\\LETARD '
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\plugins\\imageformats\\qpdf.dll',
+   'BINARY'),
+  ('PySide6\\plugins\\imageformats\\qwbmp.dll',
+   'C:\\Users\\LETARD '
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\plugins\\imageformats\\qwbmp.dll',
    'BINARY'),
   ('PySide6\\plugins\\platforms\\qdirect2d.dll',
    'C:\\Users\\LETARD '
    'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\plugins\\platforms\\qdirect2d.dll',
    'BINARY'),
-  ('PySide6\\plugins\\tls\\qschannelbackend.dll',
+  ('PySide6\\plugins\\platforms\\qminimal.dll',
    'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\plugins\\tls\\qschannelbackend.dll',
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\plugins\\platforms\\qminimal.dll',
    'BINARY'),
+  ('select',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\DLLs\\select.pyd',
+   'EXTENSION'),
   ('_decimal',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\DLLs\\_decimal.pyd',
@@ -886,6 +890,10 @@
   ('_hashlib',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\DLLs\\_hashlib.pyd',
+   'EXTENSION'),
+  ('_socket',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\DLLs\\_socket.pyd',
    'EXTENSION'),
   ('_lzma',
    'C:\\Program '
@@ -895,21 +903,13 @@
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\DLLs\\_bz2.pyd',
    'EXTENSION'),
-  ('select',
+  ('_ssl',
    'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\DLLs\\select.pyd',
-   'EXTENSION'),
-  ('_socket',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\DLLs\\_socket.pyd',
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\DLLs\\_ssl.pyd',
    'EXTENSION'),
   ('unicodedata',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\DLLs\\unicodedata.pyd',
-   'EXTENSION'),
-  ('_ssl',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\DLLs\\_ssl.pyd',
    'EXTENSION'),
   ('_queue',
    'C:\\Program '
@@ -935,6 +935,18 @@
    'C:\\Users\\LETARD '
    'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\shiboken6\\Shiboken.pyd',
    'EXTENSION'),
+  ('PySide6\\Qt6Core.dll',
+   'C:\\Users\\LETARD '
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\Qt6Core.dll',
+   'BINARY'),
+  ('PySide6\\Qt6Gui.dll',
+   'C:\\Users\\LETARD '
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\Qt6Gui.dll',
+   'BINARY'),
+  ('shiboken6\\MSVCP140.dll',
+   'C:\\Users\\LETARD '
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\shiboken6\\MSVCP140.dll',
+   'BINARY'),
   ('PySide6\\Qt6Network.dll',
    'C:\\Users\\LETARD '
    'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\Qt6Network.dll',
@@ -943,17 +955,9 @@
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\VCRUNTIME140_1.dll',
    'BINARY'),
-  ('PySide6\\Qt6Core.dll',
+  ('PySide6\\Qt6Widgets.dll',
    'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\Qt6Core.dll',
-   'BINARY'),
-  ('shiboken6\\MSVCP140.dll',
-   'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\shiboken6\\MSVCP140.dll',
-   'BINARY'),
-  ('PySide6\\Qt6Gui.dll',
-   'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\Qt6Gui.dll',
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\Qt6Widgets.dll',
    'BINARY'),
   ('PySide6\\Qt6Svg.dll',
    'C:\\Users\\LETARD '
@@ -963,10 +967,6 @@
    'C:\\Users\\LETARD '
    'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\Qt6VirtualKeyboard.dll',
    'BINARY'),
-  ('PySide6\\Qt6Widgets.dll',
-   'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\Qt6Widgets.dll',
-   'BINARY'),
   ('libcrypto-1_1.dll',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\DLLs\\libcrypto-1_1.dll',
@@ -975,6 +975,10 @@
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\DLLs\\libssl-1_1.dll',
    'BINARY'),
+  ('shiboken6\\shiboken6.abi3.dll',
+   'C:\\Users\\LETARD '
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\shiboken6\\shiboken6.abi3.dll',
+   'BINARY'),
   ('python3.dll',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_3.10.2800.0_x64__qbz5n2kfra8p0\\python3.dll',
@@ -982,10 +986,6 @@
   ('PySide6\\pyside6.abi3.dll',
    'C:\\Users\\LETARD '
    'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\pyside6.abi3.dll',
-   'BINARY'),
-  ('shiboken6\\shiboken6.abi3.dll',
-   'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\shiboken6\\shiboken6.abi3.dll',
    'BINARY'),
   ('shiboken6\\MSVCP140_2.dll',
    'C:\\Users\\LETARD '
@@ -1007,13 +1007,13 @@
    'C:\\Users\\LETARD '
    'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\Qt6Quick.dll',
    'BINARY'),
-  ('PySide6\\Qt6QmlModels.dll',
-   'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\Qt6QmlModels.dll',
-   'BINARY'),
   ('PySide6\\Qt6OpenGL.dll',
    'C:\\Users\\LETARD '
    'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\Qt6OpenGL.dll',
+   'BINARY'),
+  ('PySide6\\Qt6QmlModels.dll',
+   'C:\\Users\\LETARD '
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\Qt6QmlModels.dll',
    'BINARY')],
  [],
  [],
@@ -1021,81 +1021,73 @@
    'D:\\Documents\\Drive\\IMT\\Asso\\BDD Vrac\\BDD v2\\Build '
    'tool\\build\\main\\base_library.zip',
    'DATA'),
-  ('PySide6\\translations\\qtbase_da.qm',
+  ('PySide6\\translations\\qtbase_pl.qm',
    'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_da.qm',
-   'DATA'),
-  ('PySide6\\translations\\qtbase_pt_BR.qm',
-   'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_pt_BR.qm',
-   'DATA'),
-  ('PySide6\\translations\\qtbase_he.qm',
-   'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_he.qm',
-   'DATA'),
-  ('PySide6\\translations\\qtbase_hr.qm',
-   'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_hr.qm',
-   'DATA'),
-  ('PySide6\\translations\\qtbase_sk.qm',
-   'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_sk.qm',
-   'DATA'),
-  ('PySide6\\translations\\qtbase_cs.qm',
-   'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_cs.qm',
-   'DATA'),
-  ('PySide6\\translations\\qtbase_it.qm',
-   'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_it.qm',
-   'DATA'),
-  ('PySide6\\translations\\qtbase_hu.qm',
-   'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_hu.qm',
-   'DATA'),
-  ('PySide6\\translations\\qtbase_fr.qm',
-   'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_fr.qm',
-   'DATA'),
-  ('PySide6\\translations\\qtbase_zh_TW.qm',
-   'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_zh_TW.qm',
-   'DATA'),
-  ('PySide6\\translations\\qtbase_ca.qm',
-   'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_ca.qm',
-   'DATA'),
-  ('PySide6\\translations\\qtbase_es.qm',
-   'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_es.qm',
-   'DATA'),
-  ('PySide6\\translations\\qtbase_de.qm',
-   'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_de.qm',
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_pl.qm',
    'DATA'),
   ('PySide6\\translations\\qtbase_ru.qm',
    'C:\\Users\\LETARD '
    'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_ru.qm',
    'DATA'),
-  ('PySide6\\translations\\qtbase_pl.qm',
+  ('PySide6\\translations\\qtbase_es.qm',
    'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_pl.qm',
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_es.qm',
    'DATA'),
-  ('PySide6\\translations\\qtbase_nn.qm',
+  ('PySide6\\translations\\qtbase_ca.qm',
    'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_nn.qm',
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_ca.qm',
    'DATA'),
-  ('PySide6\\translations\\qtbase_ja.qm',
+  ('PySide6\\translations\\qtbase_he.qm',
    'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_ja.qm',
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_he.qm',
+   'DATA'),
+  ('PySide6\\translations\\qtbase_sk.qm',
+   'C:\\Users\\LETARD '
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_sk.qm',
+   'DATA'),
+  ('PySide6\\translations\\qtbase_zh_TW.qm',
+   'C:\\Users\\LETARD '
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_zh_TW.qm',
+   'DATA'),
+  ('PySide6\\translations\\qtbase_fr.qm',
+   'C:\\Users\\LETARD '
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_fr.qm',
+   'DATA'),
+  ('PySide6\\translations\\qtbase_hu.qm',
+   'C:\\Users\\LETARD '
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_hu.qm',
+   'DATA'),
+  ('PySide6\\translations\\qtbase_ko.qm',
+   'C:\\Users\\LETARD '
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_ko.qm',
+   'DATA'),
+  ('certifi\\cacert.pem',
+   'C:\\Users\\LETARD '
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\certifi\\cacert.pem',
+   'DATA'),
+  ('PySide6\\translations\\qtbase_pt_BR.qm',
+   'C:\\Users\\LETARD '
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_pt_BR.qm',
    'DATA'),
   ('PySide6\\translations\\qtbase_nl.qm',
    'C:\\Users\\LETARD '
    'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_nl.qm',
    'DATA'),
-  ('PySide6\\translations\\qtbase_ko.qm',
+  ('PySide6\\translations\\qtbase_bg.qm',
    'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_ko.qm',
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_bg.qm',
+   'DATA'),
+  ('PySide6\\translations\\qtbase_tr.qm',
+   'C:\\Users\\LETARD '
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_tr.qm',
+   'DATA'),
+  ('PySide6\\translations\\qtbase_cs.qm',
+   'C:\\Users\\LETARD '
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_cs.qm',
+   'DATA'),
+  ('PySide6\\translations\\qtbase_ja.qm',
+   'C:\\Users\\LETARD '
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_ja.qm',
    'DATA'),
   ('PySide6\\translations\\qtbase_zh_CN.qm',
    'C:\\Users\\LETARD '
@@ -1105,33 +1097,29 @@
    'C:\\Users\\LETARD '
    'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_gd.qm',
    'DATA'),
-  ('certifi\\cacert.pem',
+  ('PySide6\\translations\\qtbase_uk.qm',
    'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\certifi\\cacert.pem',
-   'DATA'),
-  ('PySide6\\translations\\qtbase_en.qm',
-   'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_en.qm',
-   'DATA'),
-  ('PySide6\\translations\\qtbase_tr.qm',
-   'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_tr.qm',
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_uk.qm',
    'DATA'),
   ('PySide6\\translations\\qtbase_lv.qm',
    'C:\\Users\\LETARD '
    'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_lv.qm',
    'DATA'),
-  ('PySide6\\translations\\qtbase_uk.qm',
+  ('PySide6\\translations\\qtbase_hr.qm',
    'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_uk.qm',
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_hr.qm',
    'DATA'),
-  ('certifi\\py.typed',
+  ('PySide6\\translations\\qtbase_de.qm',
    'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\certifi\\py.typed',
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_de.qm',
    'DATA'),
-  ('PySide6\\translations\\qtbase_fa.qm',
+  ('PySide6\\translations\\qtbase_da.qm',
    'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_fa.qm',
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_da.qm',
+   'DATA'),
+  ('PySide6\\translations\\qtbase_en.qm',
+   'C:\\Users\\LETARD '
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_en.qm',
    'DATA'),
   ('PySide6\\translations\\qtbase_fi.qm',
    'C:\\Users\\LETARD '
@@ -1141,8 +1129,20 @@
    'C:\\Users\\LETARD '
    'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_ar.qm',
    'DATA'),
-  ('PySide6\\translations\\qtbase_bg.qm',
+  ('PySide6\\translations\\qtbase_fa.qm',
    'C:\\Users\\LETARD '
-   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_bg.qm',
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_fa.qm',
+   'DATA'),
+  ('PySide6\\translations\\qtbase_nn.qm',
+   'C:\\Users\\LETARD '
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_nn.qm',
+   'DATA'),
+  ('PySide6\\translations\\qtbase_it.qm',
+   'C:\\Users\\LETARD '
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\PySide6\\translations\\qtbase_it.qm',
+   'DATA'),
+  ('certifi\\py.typed',
+   'C:\\Users\\LETARD '
+   'Lilian\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\certifi\\py.typed',
    'DATA')],
  [])

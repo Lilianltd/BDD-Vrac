@@ -66,5 +66,4 @@ if __name__ ==  '__main__' :
     print(app.windowIcon())
     main = SetUpUI()
     main.show()
-    main.setWindowIcon(qtg.QIcon('icon.png'))
     sys.exit(app.exec())

@@ -4,23 +4,8 @@ from Stock import Stock
 from DaySell import DaySell
 
 
-
-class MainWinWidget(qtw.QWidget):
-    """Widget central: C'est lui qui s'occupe de l'affichage des dossiers/fichiers"""
-    def __init__(self, parent):
-        super(MainWinWidget, self).__init__()
-        self.parent = parent
-        layout = qtw.QVBoxLayout()  
-        self.output = qtw.QTableView()
-        self.dataTable = Stock.tableExtract()
-        self.model = TableModel(self,self.dataTable,["Nom","Prix","Quantité"])
-        layout.addWidget(self.model)
-        self.setLayout(layout)
-
-
 class UpdateStock(qtw.QDialog):
     def __init__(self, parent) -> None:
-        print("update")
         super(UpdateStock, self).__init__()
         self.parent = parent
         layout = qtw.QVBoxLayout()
@@ -104,29 +89,29 @@ class MainWinMar(qtw.QMainWindow):
         self.menu[3] = self.mainMenu.addAction("Connexion")
         self.menu[3].triggered.connect(self.connexion)
 
-
-
+    def stockTable(self):
+        if self.parent.connected == True:
+            self.centralWidget = None
+            self.dataTable = Stock.tableExtract()
+            self.model = TableModel(self,self.dataTable,["Nom","Prix","Quantité"])
+            self.setCentralWidget(self.model)
+    
     @Slot()
     
     def connexion(self):
         if self.parent.connected == True:
-            self.widget = MainWinWidget(self)
-            self.setCentralWidget(self.widget)
+            self.stockTable()
         else:
             self.parent.setUpConnexion()
             if self.parent.connected == True:
-                self.widget = MainWinWidget(self)
-                self.setCentralWidget(self.widget)
+                self.stockTable()
 
         
     def updateStock(self):
         if self.parent.connected == True:
             wid = UpdateStock(self)
             wid.exec()
-            print("test")
-            self.widget = 0
-            self.widget = MainWinWidget(self)
-            self.setCentralWidget(self.widget)
+            self.stockTable()
         else:
             wid = ErrorMessage("Connectez-vous")
             wid.exec_()
@@ -135,8 +120,7 @@ class MainWinMar(qtw.QMainWindow):
         if self.parent.connected == True:
             wid = AddProduct(self)
             wid.exec()
-            self.widget = MainWinWidget(self)
-            self.setCentralWidget(self.widget)
+            self.stockTable()
         else:
             wid = ErrorMessage("Connectez-vous")
             wid.exec_()
@@ -145,8 +129,7 @@ class MainWinMar(qtw.QMainWindow):
         if self.parent.connected == True:
             wid = DelProduct()
             wid.exec()
-            self.widget = MainWinWidget(self)
-            self.setCentralWidget(self.widget)
+            self.stockTable()
         else:
             wid = ErrorMessage("Connectez-vous")
             wid.exec_()
@@ -155,8 +138,7 @@ class MainWinMar(qtw.QMainWindow):
         if self.parent.connected == True:
             wid = ModifyProduct()
             wid.exec_()
-            self.widget = MainWinWidget(self)
-            self.setCentralWidget(self.widget)
+            self.stockTable()
         else:
             wid = ErrorMessage("Connectez-vous")
             wid.exec_()
@@ -217,7 +199,7 @@ class ModifyProduct(qtw.QDialog):
 class TableModel(qtw.QTableWidget):
     def __init__(self,parent, data,headerName):        # Paramétrage général        # Paramétrage général
         super(TableModel, self).__init__()
-        self.parent = parent
+        self.parents = parent
         self.setEditTriggers(qtw.QAbstractItemView.NoEditTriggers)
         self.setSizeAdjustPolicy(qtw.QTableWidget.AdjustToContents)
         self.data = data
@@ -229,18 +211,17 @@ class TableModel(qtw.QTableWidget):
             for k in range(len(data)):
                 for i in range(len(data[0])):                    
                     self.setItem(k, i, qtw.QTableWidgetItem(str(data[k][i])))
-                    if i == 2 or i==1:
-                        self.cellDoubleClicked.connect(self.doubleClickHandler)
+
+            self.cellDoubleClicked.connect(self.doubleClickHandler)
 
     def doubleClickHandler(self):
         row = self.currentIndex().row()
         column = self.currentIndex().column()
-        print(row,column)
-        
+ 
         if (column) == 1:
-            self.parent.parent.modifyProduct()
+            self.parents.modifyProduct()
         if column == 2:
-            self.parent.parent.updateStock()
+            self.parents.updateStock()
 
 def isfloat(value) -> bool:
   try:

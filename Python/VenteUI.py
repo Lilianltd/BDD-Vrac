@@ -355,7 +355,6 @@ class TableModelCart(qtw.QTableWidget):
 
         if (column+1) == self.columnCount():
             self.parent.cart.removeProduct(productName)
-            print(self.parent.cart.cart)
             self.parent.actualise()
 
 class DialogChooseSell(qtw.QDialog):

@@ -63,7 +63,6 @@ if __name__ ==  '__main__' :
     app = qtw.QApplication(sys.argv)
     app.setStyle("Fusion")
     app.setWindowIcon(qtg.QIcon('icon.png'))
-    print(app.windowIcon())
     main = SetUpUI()
     main.show()
     sys.exit(app.exec())

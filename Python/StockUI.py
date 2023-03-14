@@ -11,25 +11,16 @@ class MainWinWidget(qtw.QWidget):
         super(MainWinWidget, self).__init__()
         self.parent = parent
         layout = qtw.QVBoxLayout()  
-        layoutO = qtw.QHBoxLayout()
-        self.output = OutputStock()
-        layoutO.addWidget(self.output)
-        layout.addLayout(layoutO)
-
-        self.setLayout(layout)
-
-class OutputStock(qtw.QWidget):
-    def __init__(self):
-        super(OutputStock, self).__init__()
-        layout = qtw.QVBoxLayout()
         self.output = qtw.QTableView()
         self.dataTable = Stock.tableExtract()
-        self.model = TableModel(self.dataTable,["Nom","Prix","Quantité"])
+        self.model = TableModel(self,self.dataTable,["Nom","Prix","Quantité"])
         layout.addWidget(self.model)
         self.setLayout(layout)
 
+
 class UpdateStock(qtw.QDialog):
     def __init__(self, parent) -> None:
+        print("update")
         super(UpdateStock, self).__init__()
         self.parent = parent
         layout = qtw.QVBoxLayout()
@@ -132,6 +123,8 @@ class MainWinMar(qtw.QMainWindow):
         if self.parent.connected == True:
             wid = UpdateStock(self)
             wid.exec()
+            print("test")
+            self.widget = 0
             self.widget = MainWinWidget(self)
             self.setCentralWidget(self.widget)
         else:
@@ -222,10 +215,12 @@ class ModifyProduct(qtw.QDialog):
         self.close()
 
 class TableModel(qtw.QTableWidget):
-    def __init__(self, data,headerName):        # Paramétrage général        # Paramétrage général
+    def __init__(self,parent, data,headerName):        # Paramétrage général        # Paramétrage général
         super(TableModel, self).__init__()
+        self.parent = parent
         self.setEditTriggers(qtw.QAbstractItemView.NoEditTriggers)
         self.setSizeAdjustPolicy(qtw.QTableWidget.AdjustToContents)
+        self.data = data
         if data != []:
             self.setColumnCount(len(data[0]))
             self.setRowCount(len(data))
@@ -234,6 +229,18 @@ class TableModel(qtw.QTableWidget):
             for k in range(len(data)):
                 for i in range(len(data[0])):                    
                     self.setItem(k, i, qtw.QTableWidgetItem(str(data[k][i])))
+                    if i == 2 or i==1:
+                        self.cellDoubleClicked.connect(self.doubleClickHandler)
+
+    def doubleClickHandler(self):
+        row = self.currentIndex().row()
+        column = self.currentIndex().column()
+        print(row,column)
+        
+        if (column) == 1:
+            self.parent.parent.modifyProduct()
+        if column == 2:
+            self.parent.parent.updateStock()
 
 def isfloat(value) -> bool:
   try:

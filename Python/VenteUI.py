@@ -62,7 +62,6 @@ class NewClient(qtw.QWidget):
         self.layouts = []
         self.products = Stock.getProductList()
         self.setMinimumSize(500,500) 
-        
         self.myLayout = qtw.QVBoxLayout()
         self.layouts.append(self.myLayout)
         
@@ -112,11 +111,10 @@ class NewClient(qtw.QWidget):
         
     def newItems(self):
 
-        if isfloat(self.quantity.text()) and float(self.quantity.text()) >= 0:
-            idachat = self.cart.productIndex(self.productSelect.currentText())
+        if isfloat(self.quantity.text()) and float(self.quantity.text()) >= 0: #on check si les données sont conformes à ce qu'on attend (prix flottant et positif)
+            idachat = self.cart.productIndex(self.productSelect.currentText()) 
 
-            if idachat == -1:
-
+            if idachat == -1: #on check si dans le panier le produit existe déjà
                 if Stock.isProductAvailable(self.productSelect.currentText(),float(self.quantity.text())):
                     Cart.addProduct(self.cart, self.productSelect.currentText(), float(self.quantity.text()))
                     self.actualise()
@@ -127,9 +125,8 @@ class NewClient(qtw.QWidget):
                     if self.check == True:
                         Cart.addProduct(self.cart, self.productSelect.currentText(), float(self.quantity.text()))
                         self.actualise()
-            
-            
-            else:
+
+            else: #l'item existe déjà dans le panier on va devoir modifier la quantité du panier
                 oldQuantity = self.cart.cart[idachat][1]
                 if Stock.isProductAvailable(self.productSelect.currentText(),float(self.quantity.text())+oldQuantity):
                     self.cart.removeProduct(self.productSelect.currentText())
@@ -184,6 +181,7 @@ class TableModel(qtw.QTableWidget):
                 for i in range(len(data[0])):                    
                     self.setItem(k, i, qtw.QTableWidgetItem(str(data[k][i])))
         self.setSizeAdjustPolicy(qtw.QTableWidget.AdjustToContents)
+
 class NegativeStock(qtw.QDialog):
     def __init__(self,parent):
         self.parent = parent
@@ -353,11 +351,7 @@ class TableModelCart(qtw.QTableWidget):
     def supp(self):
         row = self.currentIndex().row()
         column = self.currentIndex().column()
-
-        print(row,column)
-        
         productName = self.myitem[row][0].text()
-        print(productName)
 
         if (column+1) == self.columnCount():
             self.parent.cart.removeProduct(productName)

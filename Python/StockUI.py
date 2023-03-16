@@ -10,7 +10,10 @@ class UpdateStock(qtw.QDialog):
         self.parent = parent
         layout = qtw.QVBoxLayout()
         self.productName = qtw.QComboBox()
-        self.productName.addItems(Stock.getProductList())
+        if parent.name == None:
+            self.productName.addItems(Stock.getProductList())
+        else:
+            self.productName.addItem(parent.name)
         layout.addWidget(self.productName)
         self.quantityAdd = qtw.QLineEdit(self)
         self.quantityAdd.setPlaceholderText("Quantité à rajouter")
@@ -75,10 +78,10 @@ class MainWinMar(qtw.QMainWindow):
         super(MainWinMar, self).__init__()
         self.parent = parent
         # Création des widgets
-
+        self.name = None
         # Création de la fenêtre et de son pourtour
         self.mainMenu = self.menuBar()
-        self.menu = [None for i in range(0,4)]
+        self.menu = [None for i in range(0,5)]
 
         self.menu[0] = self.mainMenu.addAction("Ajouter un produit")
         self.menu[0].triggered.connect(self.addProduct)
@@ -86,8 +89,10 @@ class MainWinMar(qtw.QMainWindow):
         self.menu[1].triggered.connect(self.delProduct)
         self.menu[2] = self.mainMenu.addAction("Modifier un produit")
         self.menu[2].triggered.connect(self.updateStock)
-        self.menu[3] = self.mainMenu.addAction("Connexion")
-        self.menu[3].triggered.connect(self.connexion)
+        self.menu[3] = self.mainMenu.addAction("Modifier un prix")
+        self.menu[3].triggered.connect(self.modifyProduct)
+        self.menu[4] = self.mainMenu.addAction("Connexion")
+        self.menu[4].triggered.connect(self.connexion)
 
     def stockTable(self):
         if self.parent.connected == True:
@@ -106,7 +111,6 @@ class MainWinMar(qtw.QMainWindow):
             if self.parent.connected == True:
                 self.stockTable()
 
-        
     def updateStock(self):
         if self.parent.connected == True:
             wid = UpdateStock(self)
@@ -120,6 +124,7 @@ class MainWinMar(qtw.QMainWindow):
         if self.parent.connected == True:
             wid = AddProduct(self)
             wid.exec()
+            self.name = None
             self.stockTable()
         else:
             wid = ErrorMessage("Connectez-vous")
@@ -136,8 +141,9 @@ class MainWinMar(qtw.QMainWindow):
 
     def modifyProduct(self):
         if self.parent.connected == True:
-            wid = ModifyProduct()
+            wid = ModifyProduct(self)
             wid.exec_()
+            self.name = None
             self.stockTable()
         else:
             wid = ErrorMessage("Connectez-vous")
@@ -176,13 +182,16 @@ class DialogChooseSell(qtw.QDialog):
         self.close()
 
 class ModifyProduct(qtw.QDialog):
-    def __init__(self) -> None:
+    def __init__(self,parent) -> None:
         super(ModifyProduct, self).__init__()
         layout = qtw.QVBoxLayout()
         self.productName = qtw.QComboBox()
-        self.productName.addItems(Stock.getProductList())
+        if parent.name == None:
+            self.productName.addItems(Stock.getProductList())
+        else:
+            self.productName.addItem(parent.name)
+
         layout.addWidget(self.productName)
-        
         self.price = qtw.QLineEdit(self)
         self.price.setPlaceholderText("Prix")
         layout.addWidget(self.price)
@@ -196,6 +205,7 @@ class ModifyProduct(qtw.QDialog):
         Stock.modifyProduct(self.productName.currentText(),float(self.price.text()))
         self.close()
 
+
 class TableModel(qtw.QTableWidget):
     def __init__(self,parent, data,headerName):        # Paramétrage général        # Paramétrage général
         super(TableModel, self).__init__()
@@ -207,17 +217,22 @@ class TableModel(qtw.QTableWidget):
             self.setColumnCount(len(data[0]))
             self.setRowCount(len(data))
             self.setHorizontalHeaderLabels(headerName)
-
+            self.myitem = []
             for k in range(len(data)):
-                for i in range(len(data[0])):                    
-                    self.setItem(k, i, qtw.QTableWidgetItem(str(data[k][i])))
+                self.myitem.append([])
+                for i in range(len(data[0])):
+                    self.myitem[k].append(qtw.QTableWidgetItem(str(data[k][i])))                    
+                    self.setItem(k, i, self.myitem[k][i])
+
 
             self.cellDoubleClicked.connect(self.doubleClickHandler)
 
     def doubleClickHandler(self):
         row = self.currentIndex().row()
         column = self.currentIndex().column()
- 
+
+        self.parents.name = self.myitem[row][0].text()
+
         if (column) == 1:
             self.parents.modifyProduct()
         if column == 2:

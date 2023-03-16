@@ -31,6 +31,7 @@ class DelClient(qtw.QDialog):
         self.lineEdit = qtw.QLineEdit(self)
         completer = qtw.QCompleter(Client.clientList(None), self)
         completer.setCaseSensitivity(Qt.CaseInsensitive)
+        completer.setFilterMode(Qt.MatchContains)
         self.lineEdit.setCompleter(completer)
         #lineEdit.textChanged.connect(self.test)
         layout.addWidget(self.lineEdit)

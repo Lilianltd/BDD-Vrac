@@ -77,6 +77,7 @@ class NewClient(qtw.QWidget):
 
         self.lineEdit = qtw.QLineEdit(self)
         completer = qtw.QCompleter(Client.clientList(None), self)
+        completer.setFilterMode(Qt.MatchContains)
         completer.setCaseSensitivity(Qt.CaseInsensitive)
         self.lineEdit.setCompleter(completer)
 

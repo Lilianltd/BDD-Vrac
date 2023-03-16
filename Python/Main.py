@@ -23,7 +23,7 @@ class SetUpUI(qtw.QMainWindow) :
         self.setWindowTitle(u"BDD Vrac")
         self.resize(1000, 800)
         self.setCentralWidget(self.tabWidget)
-
+        
     def setUpConnexion(self):
         wid = ConnexionWidget()
         wid.exec()

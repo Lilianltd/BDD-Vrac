@@ -23,4 +23,3 @@ QMenuBar::item:selected{
 QMenu::item:selected, QTreeWidget::item:selected{
     background-color: #21486a;
 }
-rest
